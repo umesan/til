@@ -1,8 +1,15 @@
 # Redux
 
 ## 参考URL
+
+Redux勉強用に簡単なサンプルを作ってみた  
 http://qiita.com/DJ_Middle/items/ffa08f983df471a5c6f8  
-http://qiita.com/kiita312/items/49a1f03445b19cf407b7
+  
+Redux入門【ダイジェスト版】10分で理解するReduxの基礎  
+http://qiita.com/kiita312/items/49a1f03445b19cf407b7  
+  
+reduxを試してみた(5日目) - ajaxを使ってUIを構築する(reduxにおける非同期の制御)  
+http://qiita.com/kompiro/items/d1ffcfcba7cc34d364f0  
 
 ## 概要
 Reduxは、ReactJSが扱うUIのstate(状態)を管理をするためのフレームワーク。  
