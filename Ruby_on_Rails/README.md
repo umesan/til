@@ -38,8 +38,9 @@ rails g model Project title
 ```
 
 ### モデルを元にDBのスキーマ（枠組み...テーブル構造）を作成
+```
 rake db:migrate
-
+```
 
 ### DBの確認
 ```
