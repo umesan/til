@@ -13,6 +13,49 @@ Ruby on Rails チュートリアル
 http://railstutorial.jp/  
 
 
+## rails 環境構築
+
+### 参考URL
+http://blog.h-wd.info/2015/10/08/mac-os-x-10-11-el-capitan%E3%81%ABhomebrew%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/
+
+http://mawatari.jp/archives/install-rbenv-by-homebrew
+
+###  アップデートされたEl Capitanに「/usr/local」が存在したので。。。
+```
+sudo chown $(whoami):admin /usr/local && sudo chown -R $(whoami):admin /usr/local
+```
+
+### Homebrewをアップデード
+```
+brew update
+```
+
+### Homebrewでrbenvをインストール
+```
+# rbenvとrbenvでRubyをインストールするのに必要なruby-buildをインストール
+brew install rbenv ruby-build
+ 
+# rbenvの初期化スクリプトを.bash_profileへ追加
+echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+source ~/.bash_profile
+
+# rbenv のバージョン確認
+rbenv -v
+
+# 
+rbenv install --list
+
+```
+
+### Rubyインストール
+```
+rbenv install 2.3.0
+```
+
+
+
+
+
 ## dotinstall 写経
 
 ### プロジェクト作成
