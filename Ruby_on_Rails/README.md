@@ -170,5 +170,41 @@ http://0.0.0.0:3000/projects
 
 
 
+###  画像の出力
+rails のイメージタグヘルパー
+```
+<!-- /app/assets/images/の中を見に行く -->
+<%= image_tag "logo.png" %>
+
+# 下記タグが出力される
+<img alt="Logo" src="/assets/logo.png" />
+
+```
+
+###  リンクの設定
+
+```
+<%= link_to "Home","/" %>
+
+# 下記タグが出力される
+<a href="/">Home</a>
+
+```
+
+ルータの設定に沿った指定の仕方
+```
+<%= link_to "Project",projects_path %>
+
+# コマンドラインで rake routes した際に表示される一覧のPrefixと
+# _path の文字列を組み合わせると対象のURIへ移動する
+
+$ rake routes
+-------------------------------------------------------------------
+      Prefix Verb   URI Pattern                  Controller#Action
+-------------------------------------------------------------------
+    projects GET    /projects(.:format)          projects#index
+
+
+```
 
 
