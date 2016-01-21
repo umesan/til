@@ -20,35 +20,46 @@ http://blog.h-wd.info/2015/10/08/mac-os-x-10-11-el-capitan%E3%81%ABhomebrew%E3%8
 
 http://mawatari.jp/archives/install-rbenv-by-homebrew
 
+
 ###  アップデートされたEl Capitanに「/usr/local」が存在したので。。。
 ```
-sudo chown $(whoami):admin /usr/local && sudo chown -R $(whoami):admin /usr/local
+$ sudo chown $(whoami):admin /usr/local && sudo chown -R $(whoami):admin /usr/local
 ```
 
 ### Homebrewをアップデード
 ```
-brew update
+$ brew update
 ```
+
+> Homebrewとは  
+> 
+> 「Mac OS Xオペレーティングシステム上でソフトウェアの導入を単純化するパッケージ管理システムのひとつである」  
+> http://qiita.com/omega999/items/6f65217b81ad3fffe7e6
+
 
 ### Homebrewでrbenvをインストール
 ```
 # rbenvとrbenvでRubyをインストールするのに必要なruby-buildをインストール
-brew install rbenv ruby-build
+$ brew install rbenv ruby-build
  
 # rbenvの初期化スクリプトを.bash_profileへ追加
-echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
-source ~/.bash_profile
+$ echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+$ source ~/.bash_profile
 
 # rbenv のバージョン確認
-rbenv -v
+$ rbenv -v
 
-# 
-rbenv install --list
-
+rbenv 1.0.0
 ```
+
 
 ### Rubyインストール
 ```
+
+# インストール可能なRubyのバージョン一覧を表示
+rbenv install --list
+
+
 rbenv install 2.3.0
 ```
 
