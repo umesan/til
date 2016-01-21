@@ -15,13 +15,20 @@ http://railstutorial.jp/
 
 ## rails 環境構築
 
-### 参考URL
+#### 参考URL
 http://blog.h-wd.info/2015/10/08/mac-os-x-10-11-el-capitan%E3%81%ABhomebrew%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/
 
 http://mawatari.jp/archives/install-rbenv-by-homebrew
 
+* 1.Homebrewのインストール&アップデード
+* 3.rbenvのインストール
+* 4.Rubyインストール
+* 5.Railsインストール
 
-###  アップデートされたEl Capitanに「/usr/local」が存在したので。。。
+
+
+###  1.Homebrewのインストール
+アップデートされたEl Capitanに「/usr/local」が存在したので。。。
 ```
 $ sudo chown $(whoami):admin /usr/local && sudo chown -R $(whoami):admin /usr/local
 ```
@@ -33,11 +40,13 @@ $ brew update
 
 > Homebrewとは  
 > 
-> 「Mac OS Xオペレーティングシステム上でソフトウェアの導入を単純化するパッケージ管理システムのひとつである」  
+> 「Mac OS Xオペレーティングシステム上で  
+> ソフトウェアの導入を単純化するパッケージ管理システムのひとつである」  
+>  
 > http://qiita.com/omega999/items/6f65217b81ad3fffe7e6
 
 
-### Homebrewでrbenvをインストール
+### rbenvをインストール
 ```
 # rbenvとrbenvでRubyをインストールするのに必要なruby-buildをインストール
 $ brew install rbenv ruby-build
@@ -52,16 +61,51 @@ $ rbenv -v
 rbenv 1.0.0
 ```
 
+> rbenv (Ruby environment) とは  
+>  
+> rbenvは、複数のRubyのバージョンを管理し、プロジェクトごとに  
+> Rubyのバージョンを指定して使うことを可能としてくれるツールです。  
+> 読み方は「アールビー・エンブ」または「アールベンブ」。）
+>  
+>  http://mae.chab.in/archives/2612
+
+
+
 
 ### Rubyインストール
 ```
-
 # インストール可能なRubyのバージョン一覧を表示
-rbenv install --list
+$ rbenv install --list
 
+# 今回は2.3.0
+$ rbenv install 2.3.0
 
-rbenv install 2.3.0
+# デフォルトでruby 2.3.0 を利用するように設定
+rbenv global 2.3.0
+
 ```
+
+#  gemをアップデートしてCompassとRailsをRubyにあったものにする
+
+```
+
+# gemをアップデート
+$ gem update --system
+
+# bundler をインストール
+$ gem install bundler
+
+# Compass をインストール
+$ gem install compass
+
+# Rails をインストール
+gem install rails --no-ri --no-rdoc -V
+
+# インストールされたバージョンを確認
+$ rails -v
+Rails 4.2.5
+```
+
 
 
 
