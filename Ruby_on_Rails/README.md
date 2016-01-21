@@ -13,28 +13,33 @@ Ruby on Rails チュートリアル
 http://railstutorial.jp/  
 
 
-## rails 環境構築
+## Rails 環境構築
 
 #### 参考URL
-http://blog.h-wd.info/2015/10/08/mac-os-x-10-11-el-capitan%E3%81%ABhomebrew%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/
 
+【Mac】OS X 10.11 El CapitanにHomebrewをインストールする方法
+http://blog.h-wd.info/2015/10/08/mac-os-x-10-11-el-capitanにhomebrewをインストールする方法/
+
+Homebrewでrbenvをインストールする
 http://mawatari.jp/archives/install-rbenv-by-homebrew
 
+Ruby rbenvで使ってるRubyのバージョンを変更するぞぃ
+http://chaika.hatenablog.com/entry/2016/01/13/083000
+
+
+#### 全体的な流れ
+
 * 1.Homebrewのインストール&アップデード
-* 3.rbenvのインストール
-* 4.Rubyインストール
-* 5.Railsインストール
-
-
+* 2.rbenvのインストール
+* 3.Rubyインストール
+* 4.gemをアップデートしてCompassとRailsをRubyにあったものにする
+* 5.Rails をインストール
 
 ###  1.Homebrewのインストール
 アップデートされたEl Capitanに「/usr/local」が存在したので。。。
 ```
 $ sudo chown $(whoami):admin /usr/local && sudo chown -R $(whoami):admin /usr/local
-```
 
-### Homebrewをアップデード
-```
 $ brew update
 ```
 
@@ -46,7 +51,7 @@ $ brew update
 > http://qiita.com/omega999/items/6f65217b81ad3fffe7e6
 
 
-### rbenvをインストール
+### 2.rbenvをインストール
 ```
 # rbenvとrbenvでRubyをインストールするのに必要なruby-buildをインストール
 $ brew install rbenv ruby-build
@@ -71,8 +76,7 @@ rbenv 1.0.0
 
 
 
-
-### Rubyインストール
+### 3.Rubyインストール
 ```
 # インストール可能なRubyのバージョン一覧を表示
 $ rbenv install --list
@@ -85,8 +89,8 @@ rbenv global 2.3.0
 
 ```
 
-#  gemをアップデートしてCompassとRailsをRubyにあったものにする
 
+#  4.gemをアップデートしてCompassをRubyにあったものにする
 ```
 
 # gemをアップデート
@@ -98,14 +102,18 @@ $ gem install bundler
 # Compass をインストール
 $ gem install compass
 
+```
+
+#  5.Rails をインストール
+```
 # Rails をインストール
 gem install rails --no-ri --no-rdoc -V
 
 # インストールされたバージョンを確認
 $ rails -v
 Rails 4.2.5
-```
 
+```
 
 
 
