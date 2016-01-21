@@ -35,7 +35,8 @@ http://chaika.hatenablog.com/entry/2016/01/13/083000
 * 4.gemをアップデートしてCompassとRailsをRubyにあったものにする
 * 5.Rails をインストール
 
-###  1.Homebrewのインストール
+
+#### 1.Homebrewのインストール
 アップデートされたEl Capitanに「/usr/local」が存在したので。。。
 ```
 $ sudo chown $(whoami):admin /usr/local && sudo chown -R $(whoami):admin /usr/local
@@ -51,7 +52,7 @@ $ brew update
 > http://qiita.com/omega999/items/6f65217b81ad3fffe7e6
 
 
-### 2.rbenvをインストール
+#### 2.rbenvをインストール
 ```
 # rbenvとrbenvでRubyをインストールするのに必要なruby-buildをインストール
 $ brew install rbenv ruby-build
@@ -75,8 +76,7 @@ rbenv 1.0.0
 >  http://mae.chab.in/archives/2612
 
 
-
-### 3.Rubyインストール
+#### 3.Rubyインストール
 ```
 # インストール可能なRubyのバージョン一覧を表示
 $ rbenv install --list
@@ -90,7 +90,7 @@ rbenv global 2.3.0
 ```
 
 
-#  4.gemをアップデートしてCompassをRubyにあったものにする
+#### 4.gemをアップデートしてCompassをRubyにあったものにする
 ```
 
 # gemをアップデート
@@ -104,7 +104,8 @@ $ gem install compass
 
 ```
 
-#  5.Rails をインストール
+
+#### 5.Rails をインストール
 ```
 # Rails をインストール
 gem install rails --no-ri --no-rdoc -V
