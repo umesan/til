@@ -16,17 +16,17 @@ http://railstutorial.jp/
 ## Rails 環境構築
 
 #### 参考URL
-
-【Mac】OS X 10.11 El CapitanにHomebrewをインストールする方法
-http://blog.h-wd.info/2015/10/08/mac-os-x-10-11-el-capitanにhomebrewをインストールする方法/
-
-Homebrewでrbenvをインストールする
-http://mawatari.jp/archives/install-rbenv-by-homebrew
-
-Ruby rbenvで使ってるRubyのバージョンを変更するぞぃ
-http://chaika.hatenablog.com/entry/2016/01/13/083000
-
-
+  
+【Mac】OS X 10.11 El CapitanにHomebrewをインストールする方法  
+http://blog.h-wd.info/2015/10/08/mac-os-x-10-11-el-capitanにhomebrewをインストールする方法/  
+  
+Homebrewでrbenvをインストールする  
+http://mawatari.jp/archives/install-rbenv-by-homebrew  
+  
+Ruby rbenvで使ってるRubyのバージョンを変更するぞぃ  
+http://chaika.hatenablog.com/entry/2016/01/13/083000  
+  
+  
 #### 全体的な流れ
 
 * 1.Homebrewのインストール&アップデード
