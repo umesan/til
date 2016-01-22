@@ -11,6 +11,10 @@ http://qiita.com/kiita312/items/49a1f03445b19cf407b7
 reduxを試してみた(5日目) - ajaxを使ってUIを構築する(reduxにおける非同期の制御)  
 http://qiita.com/kompiro/items/d1ffcfcba7cc34d364f0  
 
+fluxフレームワークreduxについてドキュメントを読んだメモ
+http://fukajun.org/66
+
+
 ## 概要
 Reduxは、ReactJSが扱うUIのstate(状態)を管理をするためのフレームワーク。  
 Reduxを構成する要素としては下記のような概念がある。
