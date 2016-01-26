@@ -14,6 +14,8 @@ http://qiita.com/kompiro/items/d1ffcfcba7cc34d364f0
 fluxフレームワークreduxについてドキュメントを読んだメモ  
 http://fukajun.org/66
 
+React.js の 公式Tutorial を Redux を利用して書き直した。また Mocha + power-assert を利用したテストも追加
+http://qiita.com/ma-tu/items/561cbf84ffeb14dad4a7
 
 ## 概要
 Reduxは、ReactJSが扱うUIのstate(状態)を管理をするためのフレームワーク。  
