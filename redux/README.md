@@ -34,7 +34,7 @@ Reduxを構成する要素としては下記のような概念がある。
 - Reducerで変更したアプリケーションの状態(state)を保持する Stores(エントリーポイント内で定義)  
 等で構成されます。  
 
-## 実装ベースの構成
+## 実装ベースの最小構成
 
 http://qiita.com/DJ_Middle/items/ffa08f983df471a5c6f8
 
@@ -69,3 +69,23 @@ Viewでイベントが起こると、actionを発行して reducerに渡す。
 #### reducer.js
 action.jsで発行された actionを受け取って、Stateを更新する。
 
+
+## 実装ベースの中規模構成
+
+ディレクトリで分けるタイプ  
+http://qiita.com/ma-tu/items/561cbf84ffeb14dad4a7
+
+```
+/js/actions/      # ActionCreatorを配置
+/js/constants/    # const 系の定義ファイルを配置
+/js/containers/   # Smart Componentsを配置
+/js/jsx/          # ViewとなるJSXで記載されたReactComponentsを配置（Dumb Components）を配置
+/js/reducers/     # Reducerを配置
+/js/store/        # Storeを配置
+
+```
+
+>
+>Smart Componentsと Dumb Components について  
+>http://yukidarake.hateblo.jp/entry/2015/09/18/204023
+>
