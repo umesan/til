@@ -1,7 +1,7 @@
 # hubot導入
 
 ## 参考URL
-http://qiita.com/misopeso/items/1f418dd02e89234499b3
+http://qiita.com/misopeso/items/1f418dd02e89234499b3  
 http://qiita.com/acairojuni/items/dc4543aa5827d4c3211c
 
 ## 手順
