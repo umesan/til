@@ -137,9 +137,9 @@ heroku config:set HUBOT_HEROKU_KEEPALIVE_URL=https://xxxx.herokuapp.com/
 
 ```
 
-１１. 定期処理のため cronもインストール
+１１. 定期処理のため cron と time もインストール
 ```
-npm install cron
+npm install cron time --save
 ```
 
 １２. Heroku にデプロイ
@@ -147,7 +147,135 @@ npm install cron
 git push heroku master
 ```
 
+１３. Slackにて動作確認
+botにつぶやかせたい CHANNELSに Invite others to this channel で、作ったbotアカウントを招待。
+その後botにテスト投稿。
+```
+# アカウントに発言
+@アカウント名:ping
 
+# 返信返ってくればOK
+PONG
+```
+
+１４. Timezonの設定
+```
+heroku config:add TZ=Asia/Tokyo
+```
+
+１５. cronの設定
+
+/scripts/cron.coffee を作成し、下記を記述
+
+```
+###
+Description:ゴミの日通知
+
+cronTimeの設定方法
+「秒(0-59)」「分(0-59)」「時(0-23)」「日(1-31)」「月(0-11)」「週(0:日,1:月,2:火,3:水,4:木,5:金,6:土)」
+
+日0：
+月1：燃やすゴミ[生ゴミ、汚れている紙・プラスチック、ゴム・革製品、木]
+火2：不燃・資源ゴミ[びん、缶、本、ダンボール、服、ガラス、電池、電球]
+水3：プラスチック、ペッドボトル
+木4：燃やすゴミ
+金5：
+土6：
+###
+
+
+CronJob = require('cron').CronJob
+module.exports = (robot) ->
+
+  ###
+  月曜の21:00 に通知
+  ###
+  new CronJob
+    cronTime: "0 0 21 * * 1"
+    onTick: ->
+      robot.send {room: "trash"}, "明日は「燃えるゴミの日」"
+      return
+    start: true
+    timeZone: 'Asia/Tokyo'
+
+  ###
+  火曜の 7:00 に通知
+  ###
+  new CronJob
+    cronTime: "0 0 7 * * 2"
+    onTick: ->
+      robot.send {room: "trash"}, "今日は「燃えるゴミの日」"
+      return
+    start: true
+    timeZone: 'Asia/Tokyo'
+
+  ###
+  火曜の 21:00 に通知
+  ###
+  new CronJob
+    cronTime: "0 0 21 * * 2"
+    onTick: ->
+      robot.send {room: "trash"}, "明日は「不燃・資源ゴミの日」。"
+      return
+    start: true
+    timeZone: 'Asia/Tokyo'
+
+  ###
+  水曜の 7:00 に通知
+  ###
+  new CronJob
+    cronTime: "0 0 7 * * 3"
+    onTick: ->
+      robot.send {room: "trash"}, "今日は「不燃・資源ゴミの日」。"
+      return
+    start: true
+    timeZone: 'Asia/Tokyo'
+
+  ###
+  水曜の 21:00 に通知
+  ###
+  new CronJob
+    cronTime: "0 0 21 * * 3"
+    onTick: ->
+      robot.send {room: "trash"}, "明日は「プラスチック、ペッドボトル」を捨てる日。"
+      return
+    start: true
+    timeZone: 'Asia/Tokyo'
+
+  ###
+  木曜の 7:00 に通知
+  ###
+  new CronJob
+    cronTime: "0 0 7 * * 4"
+    onTick: ->
+      robot.send {room: "trash"}, "今日は「プラスチック、ペッドボトル」を捨てる日。"
+      return
+    start: true
+    timeZone: 'Asia/Tokyo'
+
+  ###
+  木曜の 21:00 に通知
+  ###
+  new CronJob
+    cronTime: "0 0 21 * * 4"
+    onTick: ->
+      robot.send {room: "trash"}, "明日は「燃えるゴミの日」"
+      return
+    start: true
+    timeZone: 'Asia/Tokyo'
+
+  ###
+  金曜の 7:00 に通知
+  ###
+  new CronJob
+    cronTime: "0 0 7 * * 5"
+    onTick: ->
+      robot.send {room: "trash"}, "今日は「燃えるゴミの日」"
+      return
+    start: true
+    timeZone: 'Asia/Tokyo'
+
+```
 
 
 
