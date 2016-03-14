@@ -117,10 +117,9 @@ heroku config:set HUBOT_SLACK_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 １０.  hubot-heroku-keepaliveの設定
 
-Herokuは、現在のFree Plan のままだと 一定時間何もしないとスリープしてしまい、  
-Botを動かし続けることができない。  
-  
-hubot-heroku-keepalive は自分自身を起こし続けるAdd-on。  
+Herokuは、現在のFree Plan のままだと 30分以上サイトにアクセスがないとスリープしてしまい、  
+Botを動かし続けることができないので、
+hubot-heroku-keepalive を使って定期的にHerokuを起こしてあげる。
   
 インストールは３のyo hubot にて追加されているので不要。
 下記の手順で設定していく。
@@ -134,6 +133,18 @@ Web URL:  https://xxxx.herokuapp.com
 
 # hubot-heroku-keepaliveの設定
 heroku config:set HUBOT_HEROKU_KEEPALIVE_URL=https://xxxx.herokuapp.com/
+
+heroku config:add HUBOT_HEROKU_WAKEUP_TIME=9:00 -a xxxxxxxxxx
+heroku config:add HUBOT_HEROKU_SLEEP_TIME=01:00 -a xxxxxxxxxx
+
+# heroku free dynoでは強制的に6時間のスリープに入ってしまいます。
+# そこで、既定の時間になったら再開するよう、add-onとしてHeroku Schedulerを使います。
+heroku addons:create scheduler:standard -a hubot-umeyamake
+heroku addons:open scheduler
+
+# Heroku Schedulerの設定はWeb画面で行います。時間はUTCなので、9時間マイナスする。
+# 下記をWeb画面にて登録
+curl ${HUBOT_HEROKU_KEEPALIVE_URL}heroku/keepalive
 
 ```
 
