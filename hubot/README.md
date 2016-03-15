@@ -158,15 +158,27 @@ heroku addons:create scheduler:standard -a アプリケーション名
 # 7.SchedulerのWeb設定画面へ
 heroku addons:open scheduler
 
-# 8.下記をWeb画面にて入力
+# 8.Web画面にてnew job を登録
 curl ${HUBOT_HEROKU_KEEPALIVE_URL}heroku/keepalive
 
 # 9. 起動時間の設定
-入力する時間は、UTCのため日本時間より9時間前を設定する必要あり。
+「NEXT DUE」 に入力する時間は、UTCのため日本時間より9時間前を設定する必要あり。
 起動時間は、4.で設定した起こす時間（HUBOT_HEROKU_WAKEUP_TIME）にしたいので、
 HUBOT_HEROKU_WAKEUP_TIME - 9時間 の値を設定する。
 
 ここでは、起動したい時間が7:00（HUBOT_HEROKU_WAKEUP_TIMEが 7:00）なので、9時間前の22:00を指定する。
+
+DYNO SIZE
+「Free」
+
+FREQUENCY
+「Daily」
+
+LAST RUN
+Mar 15 0:01 UTC
+
+NEXT DUE
+Mar 16 「22:00」 UTC
 
 ```
 
