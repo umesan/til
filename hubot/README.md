@@ -214,18 +214,11 @@ heroku config:add TZ=Asia/Tokyo
 
 ```
 ###
-Description:ゴミの日通知
+Description:Cronテスト
 
 cronTimeの設定方法
 「秒(0-59)」「分(0-59)」「時(0-23)」「日(1-31)」「月(0-11)」「週(0:日,1:月,2:火,3:水,4:木,5:金,6:土)」
 
-日0：
-月1：燃やすゴミ[生ゴミ、汚れている紙・プラスチック、ゴム・革製品、木]
-火2：不燃・資源ゴミ[びん、缶、本、ダンボール、服、ガラス、電池、電球]
-水3：プラスチック、ペッドボトル
-木4：燃やすゴミ
-金5：
-土6：
 ###
 
 
@@ -254,72 +247,34 @@ module.exports = (robot) ->
     start: true
     timeZone: 'Asia/Tokyo'
 
-  ###
-  火曜の 21:00 に通知
-  ###
-  new CronJob
-    cronTime: "0 0 21 * * 2"
-    onTick: ->
-      robot.send {room: "trash"}, "明日は「不燃・資源ゴミの日」。"
-      return
-    start: true
-    timeZone: 'Asia/Tokyo'
-
-  ###
-  水曜の 7:00 に通知
-  ###
-  new CronJob
-    cronTime: "0 0 7 * * 3"
-    onTick: ->
-      robot.send {room: "trash"}, "今日は「不燃・資源ゴミの日」。"
-      return
-    start: true
-    timeZone: 'Asia/Tokyo'
-
-  ###
-  水曜の 21:00 に通知
-  ###
-  new CronJob
-    cronTime: "0 0 21 * * 3"
-    onTick: ->
-      robot.send {room: "trash"}, "明日は「プラスチック、ペッドボトル」を捨てる日。"
-      return
-    start: true
-    timeZone: 'Asia/Tokyo'
-
-  ###
-  木曜の 7:00 に通知
-  ###
-  new CronJob
-    cronTime: "0 0 7 * * 4"
-    onTick: ->
-      robot.send {room: "trash"}, "今日は「プラスチック、ペッドボトル」を捨てる日。"
-      return
-    start: true
-    timeZone: 'Asia/Tokyo'
-
-  ###
-  木曜の 21:00 に通知
-  ###
-  new CronJob
-    cronTime: "0 0 21 * * 4"
-    onTick: ->
-      robot.send {room: "trash"}, "明日は「燃えるゴミの日」"
-      return
-    start: true
-    timeZone: 'Asia/Tokyo'
-
-  ###
-  金曜の 7:00 に通知
-  ###
-  new CronJob
-    cronTime: "0 0 7 * * 5"
-    onTick: ->
-      robot.send {room: "trash"}, "今日は「燃えるゴミの日」"
-      return
-    start: true
-    timeZone: 'Asia/Tokyo'
-
 ```
+
+以上で設定完了。
+
+
+## Hubot Tips
+
+### hubotの名称を変更したい場合は？
+  
+yo hubot でつけた名前を後から変更したい場合は、  
+package.jsonの name の部分を修正する。  
+  
+```
+{
+  "name": "ここに新しい名前",
+  ・・・
+  ・・・
+```
+  
+修正後、Heroku にpush。  
+  
+Slack側のアカウントも合わせて変更。  
+Browse Apps -> Hubot -> Configurations on xxxx -> Edit configuration  
+  
+のCustomize Nameで名前を変更。  
+
+
+
+
 
 
