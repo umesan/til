@@ -1,3 +1,4 @@
+
 # Hubotの導入方法
 
 ## Hubotとは
@@ -6,7 +7,8 @@ GitHub社が開発しMITライセンスで公開しているNode.jsでbotを作�
 
 ## 参考URL
 http://qiita.com/misopeso/items/1f418dd02e89234499b3  
-http://qiita.com/acairojuni/items/dc4543aa5827d4c3211c
+http://qiita.com/acairojuni/items/dc4543aa5827d4c3211c  
+https://iimuz.github.io/2015/11/11/hubotKeepalive.html
 
 ## 手順
 １. 必要パッケージのインストール
@@ -115,36 +117,56 @@ HUBOT_SLACK_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 heroku config:set HUBOT_SLACK_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-１０.  hubot-heroku-keepaliveの設定
+１０.  hubot-heroku-keepalive と scheduler の設定
 
-Herokuは、現在のFree Plan のままだと 30分以上サイトにアクセスがないとスリープしてしまい、  
-Botを動かし続けることができないので、
-hubot-heroku-keepalive を使って定期的にHerokuを起こしてあげる。
+Herokuは、現在のFree Plan のままだと下記の利用制限がある。  
   
-インストールは３のyo hubot にて追加されているので不要。
+- 30分以上サイトにアクセスがないとSleepする
+- 1日6時間の強制Sleep時間が存在する
+  
+この制限のため、デフォルトのままだとBotを動かし続けることができない。  
+  
+そこで、hubot-heroku-keepalive と scheduler いう add-onを使ってこの制限を回避する。  
+
+hubot-heroku-keepalive は30分以上アクセスがないとSleepする制限を一定間隔でサイトにリクエストを送ることで解消する。
+ただし、hubot-heroku-keepaliveは、Sleepしていない時はリクエストを送ることができるが、一回スリープしてしまうと自力で起きることはできないため、
+別途 scheduler という addon を利用してHerokuを起動してあげる。  
+  
+  
+インストールは３の yo hubot にて既に追加されているので不要。
 下記の手順で設定していく。
 
 ```
-# 設定に必要な情報を取得
+# 1.設定に必要な情報を取得
 heroku apps:info
 
-# 表示される情報の中から Web URL をコピー
+# 2.表示される情報の中から Web URL をコピー
 Web URL:  https://xxxx.herokuapp.com
 
-# hubot-heroku-keepaliveの設定
+# 3.対象のURLを設定
 heroku config:set HUBOT_HEROKU_KEEPALIVE_URL=https://xxxx.herokuapp.com/
 
-heroku config:add HUBOT_HEROKU_WAKEUP_TIME=9:00 -a xxxxxxxxxx
-heroku config:add HUBOT_HEROKU_SLEEP_TIME=01:00 -a xxxxxxxxxx
+# 4.Herokuを起こす時間を設定
+heroku config:add HUBOT_HEROKU_WAKEUP_TIME=7:00 -a アプリケーション名
 
-# heroku free dynoでは強制的に6時間のスリープに入ってしまいます。
-# そこで、既定の時間になったら再開するよう、add-onとしてHeroku Schedulerを使います。
-heroku addons:create scheduler:standard -a hubot-umeyamake
+# 5.Herokuを眠らせる時間を設定（起きる時間と寝る時間は6時間以上あける必要あり）
+heroku config:add HUBOT_HEROKU_SLEEP_TIME=1:00 -a アプリケーション名
+
+# 6.Schedulerのインストール
+heroku addons:create scheduler:standard -a アプリケーション名
+
+# 7.SchedulerのWeb設定画面へ
 heroku addons:open scheduler
 
-# Heroku Schedulerの設定はWeb画面で行います。時間はUTCなので、9時間マイナスする。
-# 下記をWeb画面にて登録
+# 8.下記をWeb画面にて入力
 curl ${HUBOT_HEROKU_KEEPALIVE_URL}heroku/keepalive
+
+# 9. 起動時間の設定
+入力する時間は、UTCのため日本時間より9時間前を設定する必要あり。
+起動時間は、4.で設定した起こす時間（HUBOT_HEROKU_WAKEUP_TIME）にしたいので、
+HUBOT_HEROKU_WAKEUP_TIME - 9時間 の値を設定する。
+
+ここでは、起動したい時間が7:00（HUBOT_HEROKU_WAKEUP_TIMEが 7:00）なので、9時間前の22:00を指定する。
 
 ```
 
@@ -287,10 +309,5 @@ module.exports = (robot) ->
     timeZone: 'Asia/Tokyo'
 
 ```
-
-
-
-
-
 
 
