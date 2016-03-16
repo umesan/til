@@ -278,9 +278,9 @@ Browse Apps -> Hubot -> Configurations on xxxx -> Edit configuration
 
 
 ### Heroku が起きない
-scheduler　の設定をしたのにHerokuが起きない。。。
-代案を探していたら、Process SchedulerというAdd-onがありGUIもわかりやすいのでこちらを導入。
-
+scheduler　の設定をしたのにHerokuが起きない。。。  
+代案を探していたら、Process SchedulerというAdd-onがありGUIもわかりやすいのでこちらを導入。  
+  
 http://sota1235.hatenablog.com/entry/2015/06/10/130000
 http://shokai.org/blog/archives/10108
 
