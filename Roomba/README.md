@@ -180,6 +180,7 @@ Response
 
 
 ### ルンバの行動履歴
+コマンド
 ```
 curl https://irobot.axeda.com/services/v1/rest/Scripto/execute/AspenApiRequest -X POST -d "blid=★ルンバのID★&robotpwd=★ルンバのパスワード★&method=missionHistory"
 ```
