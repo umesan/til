@@ -1,4 +1,3 @@
-
 # ルンバ
 
 >全自動で部屋を掃除してくれる「ルンバ」の最新モデルが「ルンバ 980」です。
@@ -176,11 +175,36 @@ Response
 }
 ```
 
+### ルンバの合計履歴
+```
+curl https://irobot.axeda.com/services/v1/rest/Scripto/execute/AspenApiRequest -X POST -d "blid=★ルンバのID★&robotpwd=★ルンバのパスワード★&method=accumulatedHistorical"
+```
+
+Request
+```
+blid: "★ルンバのID★"
+robotpwd: "★ルンバのパスワード★"
+method: "accumulatedHistorical"
+```
+
+Response
+```
+{
+  "status": "OK",
+  "method": "accumulatedHistorical",
+  "total_job_time": 合計清掃時間(分),
+  "number_of_cleaning_jobs": 合計清掃回数,
+  "total_area_cleaned": 合計清掃面積,
+  "total_distance_traveled": 総移動距離1497,
+  "dirt_detect_count": ダートディテクト(ゴミや汚れが多い場所をセンサーが感知した)回数,
+  "average_time_per_job": ジョブごとの平均時間
+}
+```
 
 
 
-### ルンバの行動履歴
-コマンド
+
+### ルンバの清掃履歴
 ```
 curl https://irobot.axeda.com/services/v1/rest/Scripto/execute/AspenApiRequest -X POST -d "blid=★ルンバのID★&robotpwd=★ルンバのパスワード★&method=missionHistory"
 ```
