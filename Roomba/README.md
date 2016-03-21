@@ -19,8 +19,9 @@ http://sikmi.com/blog/smart-house/hacking-roomba-slackbot
 
 ## API 
 
-### 掃除開始
+### 各掃除コマンド
 
+#### 掃除開始
 コマンド
 ```
 curl https://irobot.axeda.com/services/v1/rest/Scripto/execute/AspenApiRequest -X POST -d "blid=★ルンバのID★&robotpwd=★ルンバのパスワード★&method=multipleFieldSet&value=%7b%22remoteCommand%22%20%3a%20%22start%22%7d"
@@ -38,6 +39,87 @@ Response
 ```
 {"status":"OK","method":"multipleFieldSet"}
 ```
+
+#### 掃除一時停止
+コマンド
+```
+curl https://irobot.axeda.com/services/v1/rest/Scripto/execute/AspenApiRequest -X POST -d "blid=★ルンバのID★&robotpwd=★ルンバのパスワード★&method=multipleFieldSet&value=%7b%22remoteCommand%22%20%3a%20%22pause%22%7d"
+```
+
+Request
+```
+blid: "★ルンバのID★"
+robotpwd: "★ルンバのパスワード★"
+method: "multipleFieldSet"
+value: { "remoteCommand" : "pause" }
+```
+
+Response
+```
+{"status":"OK","method":"multipleFieldSet"}
+```
+
+
+#### 掃除再開
+コマンド
+```
+curl https://irobot.axeda.com/services/v1/rest/Scripto/execute/AspenApiRequest -X POST -d "blid=★ルンバのID★&robotpwd=★ルンバのパスワード★&method=multipleFieldSet&value=%7b%22remoteCommand%22%20%3a%20%22resume%22%7d"
+```
+
+Request
+```
+blid: "★ルンバのID★"
+robotpwd: "★ルンバのパスワード★"
+method: "multipleFieldSet"
+value: { "remoteCommand" : "resume" }
+```
+
+Response
+```
+{"status":"OK","method":"multipleFieldSet"}
+```
+
+
+#### Dockに戻す
+コマンド
+```
+curl https://irobot.axeda.com/services/v1/rest/Scripto/execute/AspenApiRequest -X POST -d "blid=★ルンバのID★&robotpwd=★ルンバのパスワード★&method=multipleFieldSet&value=%7b%22remoteCommand%22%20%3a%20%22dock%22%7d"
+```
+
+Request
+```
+blid: "★ルンバのID★"
+robotpwd: "★ルンバのパスワード★"
+method: "multipleFieldSet"
+value: { "remoteCommand" : "dock" }
+```
+
+Response
+```
+{"status":"OK","method":"multipleFieldSet"}
+```
+
+#### 掃除終了
+コマンド
+```
+curl https://irobot.axeda.com/services/v1/rest/Scripto/execute/AspenApiRequest -X POST -d "blid=★ルンバのID★&robotpwd=★ルンバのパスワード★&method=multipleFieldSet&value=%7b%22remoteCommand%22%20%3a%20%22stop%22%7d"
+```
+
+Request
+```
+blid: "★ルンバのID★"
+robotpwd: "★ルンバのパスワード★"
+method: "multipleFieldSet"
+value: { "remoteCommand" : "stop" }
+```
+
+Response
+```
+{"status":"OK","method":"multipleFieldSet"}
+```
+
+
+
 
 
 ### ルンバの情報取得
@@ -174,6 +256,19 @@ Response
   }"
 }
 ```
+
+ルンバの状態  
+robot_status.phase にルンバの現在の状態が返ってくる  
+```
+charge：充電中
+run:清掃中
+stop:一時停止中
+hmUsrDock：Dockに帰宅中
+```
+
+
+
+
 
 ### ルンバの合計履歴
 ```
