@@ -17,7 +17,7 @@ http://sikmi.com/blog/smart-house/hacking-roomba-slackbot
 
 
 
-## API 
+# API 
 
 ### 各掃除コマンド
 
@@ -357,9 +357,9 @@ Response
 
 
 
-## Slack連携
+# Slack連携
 
-hubotを利用して下記を実現する
+roombaのapi と hubotを利用して下記を実現する
 - 掃除開始と掃除完了をslackに通知
 - 「@romba 掃除しろ」 で掃除開始
 
