@@ -561,23 +561,7 @@ module.exports = (robot) ->
   金曜 8:45 に掃除開始
   ###
   new CronJob
-    cronTime: "0 45 8 * * 1"
-    onTick: ->
-      roombaStart()
-      return
-    start: true
-    timeZone: 'Asia/Tokyo'
-
-  new CronJob
-    cronTime: "0 45 8 * * 3"
-    onTick: ->
-      roombaStart()
-      return
-    start: true
-    timeZone: 'Asia/Tokyo'
-
-  new CronJob
-    cronTime: "0 45 8 * * 5"
+    cronTime: "0 45 8 * * 1,3,5"
     onTick: ->
       roombaStart()
       return
