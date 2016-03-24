@@ -18,9 +18,12 @@ http://www.tapun.net/raspi/raspi-os-setup
 
 # OS インストール
 
-### 1. 公式サイトから「Raspbian Jessie」のZIPファイルをダウンロード。
-https://www.raspberrypi.org/downloads/raspbian/
-  
+### 1. 公式サイトからOSをダウンロード。
+
+1-1. 「Raspbian Jessie」のZIPファイルを選択  
+https://www.raspberrypi.org/downloads/raspbian/  
+1-2. ダウンロード後、zipを解凍、imgファイルがでてくる  
+
 ### 2. microSDカードをフォーマット
   
 2-0. SDカードをMacに挿入  
@@ -38,10 +41,17 @@ https://www.raspberrypi.org/downloads/raspbian/
 3-4. ハードウェア -> USB -> 挿入したSDカードを選択  
 3-5. BSD名(diskX)のX部分をメモ  
 
+### 4. img ファイルをmicroSDに配置
 
+ターミナルで下記実行
+```
+sudo dd bs=1m if=path_of_your_image.img of=/dev/rdiskn
+```
 
-
-
+SDカードを取り出し
+```
+sudo diskutil eject /dev/rdisk3
+```
 
 
 
