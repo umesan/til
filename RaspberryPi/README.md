@@ -18,10 +18,10 @@ http://www.tapun.net/raspi/raspi-os-setup
 
 # OS インストール
 
-## 1. 公式サイトから「Raspbian Jessie」のZIPファイルをダウンロード。
+### 1. 公式サイトから「Raspbian Jessie」のZIPファイルをダウンロード。
 https://www.raspberrypi.org/downloads/raspbian/
   
-## 2. microSDカードをフォーマット
+### 2. microSDカードをフォーマット
   
 2-0. SDカードをMacに挿入  
 2-1. アプリケーション  
@@ -30,13 +30,14 @@ https://www.raspberrypi.org/downloads/raspbian/
 2-4. 挿入したSDカードを選択  
 2-5. 消去  
 2-6. フォーマットを MS-DOS(FAT)にして消去実行  
-  
-## 3. microSDカードのフォーマット確認とBSD名の確認
-3-1. appleメニュー
-3-2. このMacについて
-3-3. システムレポート
-3-4. ハードウェア -> USB -> 挿入したSDカードを選択
-3-5. BSD名をメモ
+
+### 3. microSDカードのフォーマット確認とBSD名の確認
+3-1. appleメニュー  
+3-2. このMacについて  
+3-3. システムレポート  
+3-4. ハードウェア -> USB -> 挿入したSDカードを選択  
+3-5. BSD名(diskX)のX部分をメモ  
+
 
 
 
