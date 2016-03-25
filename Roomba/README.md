@@ -574,4 +574,15 @@ module.exports = (robot) ->
 
 
 ### お掃除エラーについて
-http://faq.irobot-jp.com/faq/detail?site=WTXL9GXD&category=2&id=133&search=true
+
+#### エラーコードと原因一覧
+http://irobot-homesupport-ja-jp.custhelp.com/app/answers/detail/a_id/9531/~/%E3%83%AB%E3%83%B3%E3%83%90900%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA%E3%80%80%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8
+
+#### エラーコードの格納場所
+getStatus API の robot_statusの errorにエラーコードがはります。
+```
+robot_status.error
+```
+
+
+
