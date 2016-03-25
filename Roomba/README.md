@@ -569,3 +569,9 @@ module.exports = (robot) ->
     timeZone: 'Asia/Tokyo'
 
 ```
+
+
+
+
+### お掃除エラーについて
+http://faq.irobot-jp.com/faq/detail?site=WTXL9GXD&category=2&id=133&search=true
