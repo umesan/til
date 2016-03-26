@@ -1,5 +1,5 @@
 
-# Raspberry Pi
+# RaspberryPi
 
 # 参考URL
 
@@ -14,6 +14,35 @@ http://www.tapun.net/raspi/raspi-os-setup
 >センサーが拾った情報を遠隔地で取得したり、
 >接続したディスプレイに表示させる内容をスマートフォンから制御したりといったことも可能な、
 >「モノのインターネット(Internet of Things、以下IoT)」の基となる製品。
+
+
+## OSインストールの方法
+
+RaspberryPiはコンピュータなので、
+RaspberryPiで何かするにはRaspberryPi用のOSインストールが必要。
+
+OSをインストールするには2通りある。
+
+1. Noobsというインストーラ経由で、OSをインストールする
+2. OSを直接インストールする
+
+
+#### NOOBS
+NoobsはRaspberry Pi用のOS"インストーラ"。 
+https://www.raspberrypi.org/downloads/noobs/
+
+Noobsは“New Out Of the Box Software”の略です。“Out of thebox”は
+「枠を超える」という意味、（OSの）枠を超えたソフトウェアという意味合い。
+
+RaspbianをはじめとするいろいろなOSを、
+クリックだけでRaspberry Piにインストールすることができるようになります。
+
+#### Raspbian
+Raspberry Piの最も一般的なOS。
+https://www.raspberrypi.org/downloads/raspbian/
+
+#### その他のOS
+Pidora,RISC OS,RaspBMC,Arch,OpenELEC
 
 
 # OS インストール
