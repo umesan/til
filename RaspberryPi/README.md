@@ -2,7 +2,8 @@
 # RaspberryPi
 
 # 参考URL
-
+http://okuzawats.com/raspberry-pi-os-install-20140904
+http://okuzawats.com/noobs-20150603
 http://www.tapun.net/raspi/raspi-os-setup
 
 
@@ -18,28 +19,32 @@ http://www.tapun.net/raspi/raspi-os-setup
 
 ## OSインストールの方法
 
-RaspberryPiはコンピュータなので、
-RaspberryPiで何かするにはRaspberryPi用のOSインストールが必要。
-
-OSをインストールするには2通りある。
-
+RaspberryPiはコンピュータなので、  
+RaspberryPiで何かするにはRaspberryPi用のOSインストールが必要。  
+  
+OSをインストールするには2通りある。  
+  
 1. Noobsというインストーラ経由で、OSをインストールする
 2. OSを直接インストールする
 
 
 #### NOOBS
-NoobsはRaspberry Pi用のOS"インストーラ"。 
-https://www.raspberrypi.org/downloads/noobs/
+NoobsはRaspberry Pi用のOS"インストーラ"。   
+https://www.raspberrypi.org/downloads/noobs/  
+  
+Noobsは“New Out Of the Box Software”の略です。“Out of thebox”は  
+「枠を超える」という意味、（OSの）枠を超えたソフトウェアという意味合い。  
+  
+RaspbianをはじめとするいろいろなOSを、  
+クリックだけでRaspberry Piにインストールすることができるようになります。  
 
-Noobsは“New Out Of the Box Software”の略です。“Out of thebox”は
-「枠を超える」という意味、（OSの）枠を超えたソフトウェアという意味合い。
-
-RaspbianをはじめとするいろいろなOSを、
-クリックだけでRaspberry Piにインストールすることができるようになります。
+容量が重いが、GUIがあるのでOSのインストールが簡単。
 
 #### Raspbian
 Raspberry Piの最も一般的なOS。
 https://www.raspberrypi.org/downloads/raspbian/
+
+直接インストールも可能だし、Noobs経由でのインストールも可能。
 
 #### その他のOS
 Pidora,RISC OS,RaspBMC,Arch,OpenELEC
