@@ -7,7 +7,7 @@ http://okuzawats.com/noobs-20150603
 http://www.tapun.net/raspi/raspi-os-setup
 
 
->Raspberry Pi（ラズベリー パイ）は、ARMプロセッサを搭載したシングルボードコンピュータ。
+>Raspberry Pi（ラズベリー パイ）は、ARMプロセッサを搭載したシングルボードコンピュータ。  
 >イギリスのラズベリーパイ財団 (Raspberry Pi Foundation) によって開発されている。
 
 >単体でも汎用コンピュータとして動作するスペックを持っており、
@@ -28,7 +28,7 @@ OSをインストールするには2通りある。
 2. OSを直接インストールする
 
 
-#### NOOBS
+#### Noobs
 NoobsはRaspberry Pi用のOS"インストーラ"。   
 https://www.raspberrypi.org/downloads/noobs/  
   
