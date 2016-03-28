@@ -2,10 +2,10 @@
 # RaspberryPi
 
 # 参考URL
-http://okuzawats.com/raspberry-pi-os-install-20140904
-http://okuzawats.com/noobs-20150603
-http://www.tapun.net/raspi/raspi-os-setup
-
+http://okuzawats.com/raspberry-pi-os-install-20140904  
+http://okuzawats.com/noobs-20150603  
+http://www.tapun.net/raspi/raspi-os-setup  
+  
 コマンドでのインストール参考  
 http://karaage.hatenadiary.jp/entry/2015/10/20/073000
 
@@ -80,7 +80,7 @@ https://www.raspberrypi.org/downloads/raspbian/
 　　　　2-6-2. このMacについて  
 　　　　2-6-3. システムレポート  
 　　　　2-6-4. ハードウェア -> USB -> 挿入したSDカードを選択  
-　　　　2-6-5. ボリューム：ファイルシステムが MS-DOS FAT32になっているか確認。
+　　　　2-6-5. ボリューム：ファイルシステムが MS-DOS FAT32になっているか確認。  
 　　　　2-6-6. ボリューム：BSD名(diskX)のX部分をメモ(うちの環境ではdisk2s1)  
 
 ### 3. imgファイルをmicroSDに書き込み
@@ -105,7 +105,7 @@ df -h
 diskutil umountDisk /dev/disk2s1
 ```
   
-  
+
 3-3. imgファイルの配置先まで移動
 
 1-2の imgファイルの場所までターミナルで移動
