@@ -6,6 +6,9 @@ http://okuzawats.com/raspberry-pi-os-install-20140904
 http://okuzawats.com/noobs-20150603
 http://www.tapun.net/raspi/raspi-os-setup
 
+コマンドでのインストール参考  
+http://karaage.hatenadiary.jp/entry/2015/10/20/073000
+
 
 >Raspberry Pi（ラズベリー パイ）は、ARMプロセッサを搭載したシングルボードコンピュータ。  
 >イギリスのラズベリーパイ財団 (Raspberry Pi Foundation) によって開発されている。
@@ -52,45 +55,94 @@ Pidora,RISC OS,RaspBMC,Arch,OpenELEC
 
 # OS インストール
 
+Noobs経由で作業したところ、HDMIを認識してくれずGUIでのOSインストール作業ができなかったため、  
+コマンドで直接OSをインストールするようにした。
+
+
 ### 1. 公式サイトからOSをダウンロード。
 
 1-1. 「Raspbian Jessie」のZIPファイルを選択  
 https://www.raspberrypi.org/downloads/raspbian/  
-1-2. ダウンロード後、zipを解凍、imgファイルがでてくる  
+
+1-2. ダウンロード後、zipを解凍、imgファイルがでてくるのでファイルの配置先を認識しておく
+     うちの環境では Downloads の中に出力されている状態。  
 
 ### 2. microSDカードをフォーマット
   
-2-0. SDカードをMacに挿入  
-2-1. アプリケーション  
-2-2. ユーティリティ  
-2-3. ディスクユーティリティ  
-2-4. 挿入したSDカードを選択  
-2-5. 消去  
-2-6. フォーマットを MS-DOS(FAT)にして消去実行  
+2-1. SD Card Formatter(for Mac) をダウンロード＆インストール  
+     https://www.sdcard.org/downloads/formatter_4/  
+2-2. SDカードをMacに挿入  
+2-3. SD Card Formatterをアプリケーションから起動し、挿入したSDカードを指定
+2-4. 上書きフォーマットを選び、フォーマットボタンを押す。
+2-5. 時間がかかるが完了まで待つ
+2-6. 完了後、フォーマット確認作業をする
+        2-6-1. appleメニュー  
+        2-6-2. このMacについて  
+        2-6-3. システムレポート  
+        2-6-4. ハードウェア -> USB -> 挿入したSDカードを選択  
+        2-6-5. ボリューム：ファイルシステムが MS-DOS FAT32になっているか確認。
+        2-6-6. ボリューム：BSD名(diskX)のX部分をメモ(うちの環境ではdisk2s1)  
 
-### 3. microSDカードのフォーマット確認とBSD名の確認
-3-1. appleメニュー  
-3-2. このMacについて  
-3-3. システムレポート  
-3-4. ハードウェア -> USB -> 挿入したSDカードを選択  
-3-5. BSD名(diskX)のX部分をメモ  
+### 3. imgファイルをmicroSDに書き込み
 
-### 4. img ファイルをmicroSDに配置
+3-1. ディスクのデバイスファイルの確認。
+  
+ターミナルで下記コマンド実行。
+```
+df -h
+```
+  
+2-6-6で確認した BSD名が表示されているのがデバイスファイル。  
+うちの環境では下記。  
+```
+/dev/disk2s1
+```
+  
+3-2. 書き込みしたいSDカードをアンマウント
 
+```
+diskutil umountDisk /dev/disk2s1
+```
+
+3-3. imgファイルの配置先まで移動
+
+1-2の imgファイルの場所までターミナルで移動
+```
+cd Downloads
+```
+  
+3-4. imgファイルの書き込み  
+  
 ターミナルで下記実行
 ```
-sudo dd bs=1m if=path_of_your_image.img of=/dev/rdiskn
+sudo dd if=※imgファイルのファイル名※ of=※デバイスファイル(diskの前にrをつける)※ bs=1m
+
+# うちの環境ではこんな感じ
+sudo dd if=2016-03-18-raspbian-jessie.img of=/dev/rdisk2s1 bs=1m
 ```
 
-SDカードを取り出し
+/dev/disk2s1 に対して /dev/rdisk2s1 のようにrをつけるのがポイント。
+アンバッファモードというのになって書き込みが速くなるらしい。
+bs=1mは一度に書き込む容量を表していて1m(1MB)くらいにしないとこれまた速度が遅くなるとのこと。
+
+
+書き込みが終わると下記のようなメッセージが表示される。
 ```
-sudo diskutil eject /dev/rdisk3
+3847+0 records in
+3847+0 records out
+4033871872 bytes transferred in 231.269470 secs (17442302 bytes/sec)
+```
+  
+3-5. SDカードの取り出し  
+  
+以下のコマンドでアンマウントしてからSDカードを取り出す。  
+```
+diskutil eject /dev/disk2s1
 ```
 
 
-
-
-
+これで img ファイルのmicroSDへの書き込みは完了。  
+MacからmicroSDを抜いて、Raspberry Piに挿入する。
 
 
 
