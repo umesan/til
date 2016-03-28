@@ -117,7 +117,11 @@ vw の値は、スクロールバーを含むので HTML の表示領域を % �
 
 
 
-## WordPressでの指定
+## WordPressでの例
+
+WordPress4.4からはレスポンシブ・イメージが標準実装されている。  
+出力される指定が参考になるのでメモ。
+
 ```
 <img 
   src="http://dummyimage.com/100x50"
