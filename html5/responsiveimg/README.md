@@ -93,6 +93,11 @@ srcset="http://dummyimage.com/200x100 480w,
 
 ~~50vw をした場合、viewport 2 の端末では、読み込まれた画像サイズの0.5倍のサイズで出力する。~~
 
+ビューポートは、ブラウザ表示領域でスクロールバーを含んだサイズとなり、  
+幅を表す時は vw という相対的な単位で指定します。スクロールバーを含んだ全幅サイズが 100vw となります。  
+  
+vw の値は、スクロールバーを含むので HTML の表示領域を % で示した値と若干異なるので % ではなく vw   という単位で明確に区別していると思われますが、％値より若干大きなサイズと思っていればほぼほぼ同じようなものです。  
+  
   
 ```
 // 横幅 50pxで表示
@@ -139,5 +144,5 @@ srcset="http://dummyimage.com/200x100 480w,
 
 ## 参考サイト
 http://parashuto.com/rriver/responsive-web/responsive-images-and-picturefill-2
-
+http://celtislab.net/archives/20151215/wp-responsive-srcset-test/
 
