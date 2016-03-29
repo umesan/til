@@ -1,6 +1,16 @@
 
 # RaspberryPi
 
+>Raspberry Pi（ラズベリー パイ）は、ARMプロセッサを搭載したシングルボードコンピュータ。  
+>イギリスのラズベリーパイ財団 (Raspberry Pi Foundation) によって開発されている。
+
+>単体でも汎用コンピュータとして動作するスペックを持っており、
+>インターネットを介して様々な情報の伝播も可能なため、
+>センサーが拾った情報を遠隔地で取得したり、
+>接続したディスプレイに表示させる内容をスマートフォンから制御したりといったことも可能な、
+>「モノのインターネット(Internet of Things、以下IoT)」の基となる製品。
+
+
 # 参考URL
 http://okuzawats.com/raspberry-pi-os-install-20140904  
 http://okuzawats.com/noobs-20150603  
@@ -10,14 +20,6 @@ http://www.tapun.net/raspi/raspi-os-setup
 http://karaage.hatenadiary.jp/entry/2015/10/20/073000
 
 
->Raspberry Pi（ラズベリー パイ）は、ARMプロセッサを搭載したシングルボードコンピュータ。  
->イギリスのラズベリーパイ財団 (Raspberry Pi Foundation) によって開発されている。
-
->単体でも汎用コンピュータとして動作するスペックを持っており、
->インターネットを介して様々な情報の伝播も可能なため、
->センサーが拾った情報を遠隔地で取得したり、
->接続したディスプレイに表示させる内容をスマートフォンから制御したりといったことも可能な、
->「モノのインターネット(Internet of Things、以下IoT)」の基となる製品。
 
 
 ## OSインストールの方法
