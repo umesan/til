@@ -66,7 +66,7 @@ Noobs経由で作業したところ、HDMIを認識してくれずGUIでのOSイ
 1-1. 「Raspbian Jessie」のZIPファイルを選択  
 https://www.raspberrypi.org/downloads/raspbian/  
 
-1-2. ダウンロード後、zipを解凍、imgファイルがでてくるのでファイルの配置先を認識しておく
+1-2. ダウンロード後、zipを解凍、imgファイルがでてくるのでファイルの配置先を認識しておく  
      うちの環境では Downloads の中に出力されている状態。  
 
 ### 2. microSDカードをフォーマット
