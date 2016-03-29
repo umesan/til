@@ -19,7 +19,8 @@ http://www.tapun.net/raspi/raspi-os-setup
 コマンドでのインストール参考  
 http://karaage.hatenadiary.jp/entry/2015/10/20/073000
 
-
+SD書き込み失敗の原因参考
+http://divide-et-impera.org/archives/1092
 
 
 ## OSインストールの方法
@@ -123,12 +124,26 @@ cd Downloads
 sudo dd if=※imgファイルのファイル名※ of=※デバイスファイル(diskの前にrをつける)※ bs=1m
 
 # うちの環境ではこんな感じ
-sudo dd if=2016-03-18-raspbian-jessie.img of=/dev/rdisk2s1 bs=1m
+sudo dd if=2016-03-18-raspbian-jessie.img of=/dev/rdisk2 bs=1m
 ```
 
-/dev/disk2s1 に対して /dev/rdisk2s1 のようにrをつけるのがポイント。
-アンバッファモードというのになって書き込みが速くなるらしい。
+/dev/disk2s1 に対して /dev/rdisk2 のようにrをつけるのとs1を外すのがポイント。
+
+
+rをつけるとアンバッファモードというのになって書き込みが速くなるらしい。
 bs=1mは一度に書き込む容量を表していて1m(1MB)くらいにしないとこれまた速度が遅くなるとのこと。
+
+また、s1を外す理由は下記。
+>先ほどdfコマンドで表示したものは/dev/sdc1だけれども、ここでは/dev/sdcと入力。
+>1はパーティションの番号になるので、それではなくてSDカードそのもののデバイスファイル名を入力する必要がある。
+>fdisk -lで表示される名前だ。
+>うっかり間違って1つけて最初導入したのだけれども、
+>そうするとRaspberry piは起動しない。
+>PWRランプがずっとついたままでACTランプはまったく変化無しだ。
+>ちなみにbsは一回の書き込みのデータサイズ。変更せずにそのままで良い。
+>このとおりにインストールすれば、ちゃんと起動するSDカードを作成できると思う。
+>
+>http://divide-et-impera.org/archives/1092
 
 
 書き込みが終わると下記のようなメッセージが表示される。
