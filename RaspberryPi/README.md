@@ -168,4 +168,52 @@ MacからmicroSDを抜いて、Raspberry Piに挿入する。
 
 
 
+# 初期設定
+
+### 初期設定の参考URL
+  
+初期設定系  
+http://karaage.hatenadiary.jp/entry/2015/10/20/073000  
+http://www.tapun.net/raspi/raspi-os-setup  
+http://qiita.com/JO3QMA/items/b0892ce38f9220abea29  
+  
+ssh設定  
+http://okuzawats.com/ssh-20140917  
+  
+wifi設定  
+http://denshikousaku.net/raspberry-pi-wifi-lan-usb  
+  
+セキュリティ設定  
+http://masatolan.com/raspberry-pi/raspberry-pi-security/  
+  
+文字化け  
+http://start-now.link/100/archives/1930  
+  
+
+### 初期設定でやったこと概要
+
+1. ファイルシステムの拡張
+2. タイムゾーン設定
+3. キーボードの設定
+4. SSHの有効化
+5. wifi設定
+6. ソフトウェアのアップデート
+7. root パスワードの設定
+8. デフォルトユーザ名以外のユーザに変更
+9. SSH設定
+10. 日本語インストール
+
+
+### 初期設定の仕方について
+GUIから設定する方法と、Terminalから設定する方法の2通りがある。
+
+GUIからやる場合は、画面左上から
+Menu -> Preferences -> Raspberry pi Configuration
+で立ち上がる画面から設定。
+
+Terminalから設定する場合は、
+画面上メニューからTerminalを選択。
+
+
+### 1. ファイルシステムの拡張
 
