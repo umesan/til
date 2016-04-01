@@ -380,12 +380,21 @@ sudo chmod 755 /etc/init.d/homebridge
 sudo update-rc.d homebridge defaults
 ```
 
-##### 5. 手動実行
+##### 5. 手動実行する
 ```
 sudo /etc/init.d/homebridge start
 ```
+  
+これで、ログアウト（ターミナルを落と）してもHomebridgeは実行されつづける。
 
-#### 状態とログ
+
+#### 6. ログとエラー確認
+
+Homebridge経由で実行した処理は、
+ログ＆エラーとしてたまっていく。
+
+下記を実行すると現在のログが確認できる。
+
 ```
 tail -f /var/log/homebridge.log
 tail -f /var/log/homebridge.err
