@@ -239,35 +239,35 @@ sudo shutdown -h now
 
 
 # Homekit
->HomeKitとはApple製品とホームセキュリティや家電を連携する開発システムの事です。
+>HomeKitとはApple製品とホームセキュリティや家電を連携する開発システムの事です。  
 >siriで指示すること電気をつけたり、現在は対応家電も発売されています。
 
 
 
 # Homebridge
->Homekitをエミュレートするnode.jsサーバ。
+>Homekitをエミュレートするnode.jsサーバ。  
 >https://datahotel.io/archives/725
 
 
 ### 永続化
 
-＜参考URL＞
+＜参考URL＞  
 https://github.com/nfarina/homebridge/wiki/Running-HomeBridge-on-a-Raspberry-Pi
 
 Raspberry-Pi を再起動した際に、Homebridgeを起動するため、
 init スクリプトを作成する。
 
-#### ssh接続
+##### 1. Raspberry-Piにssh接続
 ```
 ssh ume@192.168.x.xx -p xxxxx
 ```
 
-#### init スクリプトの作成
+##### 2. init スクリプトを作成
 ```
 sudo vi /etc/init.d/homebridge
 ```
 
-#### 下記をコピーして貼り付け。
+##### 3. 下記URLの内容をコピー＆編集して書き込み。
 https://raw.githubusercontent.com/fhd/init-script-template/master/template
 
 ```
@@ -374,13 +374,13 @@ esac
 exit 0
 ```
 
-#### パーミッション変更とインストール
+##### 4. パーミッション変更とインストール
 ```
 sudo chmod 755 /etc/init.d/homebridge
 sudo update-rc.d homebridge defaults
 ```
 
-#### 手動実行
+##### 5. 手動実行
 ```
 sudo /etc/init.d/homebridge start
 ```
