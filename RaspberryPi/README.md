@@ -541,14 +541,3 @@ tail -f /var/log/homebridge.err
 ## Raspberry pi の ssh が切れる問題
 http://stkay.hateblo.jp/entry/2014/09/11/162214
 
-ssh ume@192.168.0.18 -p 37895
-
-```
-Host 101.pi
-User ume
-Port 37895
-Hostname 192.168.0.18
-ServerAliveInterval 20
-```
-
-ssh ume@101.pi
