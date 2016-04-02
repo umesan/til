@@ -192,30 +192,165 @@ http://start-now.link/100/archives/1930
 
 ### 初期設定でやったこと概要
 
-1. ファイルシステムの拡張
-2. タイムゾーン設定
-3. キーボードの設定
-4. SSHの有効化
-5. wifi設定
-6. ソフトウェアのアップデート
-7. root パスワードの設定
-8. デフォルトユーザ名以外のユーザに変更
-9. SSH設定
+ 0. 機器の設置
+ 1. ファイルシステムの拡張
+ 2. タイムゾーン設定
+ 3. キーボードの設定
+ 4. SSHの有効化
+ 5. wifi設定
+ 6. ソフトウェアのアップデート
+ 7. root パスワードの設定
+ 8. デフォルトユーザ名以外のユーザに変更
+ 9. SSH設定
 10. 日本語インストール
 
 
-### 初期設定の仕方について
-GUIから設定する方法と、Terminalから設定する方法の2通りがある。
-
-GUIからやる場合は、画面左上から
-Menu -> Preferences -> Raspberry pi Configuration
-で立ち上がる画面から設定。
-
-Terminalから設定する場合は、
-画面上メニューからTerminalを選択。
 
 
-### 1. ファイルシステムの拡張
+
+### 0. 機器の設置
+
+
+#### 0-1. 機器の設置
+
+Raspberry Piに下記を接続  
+  
+- USBキーボード
+- USBマウス
+- USB無線LANアダプタ
+- ディスプレイ(HDMIケーブル)
+- インストールした micro SD
+
+最後に、電源（マイクロUSB）を接続。
+OSのインストールに成功していると、
+電源を接続するだけで起動するはず。
+
+
+#### 0-2. OS起動後の初期設定の仕方について
+GUIから設定する方法と、Terminalから設定する方法の2通りがある。  
+  
+GUIからやる場合は、画面左上から  
+Menu -> Preferences -> Raspberry pi Configuration  
+で立ち上がる画面から設定。  
+  
+Terminalから設定する場合は、  
+画面上メニューからTerminalを選択。  
+  
+Terminal 起動後、下記コマンドを実行  
+  
+```
+sudo raspi-config
+```
+  
+  
+設定用画面が立ち上がる。
+
+
+### 1. ファイルシステムの拡張 
+「1 Expand Filesystem」を選択。
+
+選択することで、SDカードの使われていない領域が開放され、
+すべての領域を使えるようになる。
+
+### 2. タイムゾーン設定
+
+##### 2-1 「4 Internationalsation Options」を選択。
+
+##### 2-2 「I1 Change Locale」を選択
+下記を選択。
+-「en_GB.ISO-8859-15 ISO 8859-15」
+-「ja_JP.EUC-JP EUC-JP」
+-「ja_JP.UTF-8 UTF-8」
+
+デフォルトロケールを「ja_JP.UTF-8」で設定。
+
+
+##### 2-3 I2 「Change Timezone」を選択
+タイムゾーンを AsiaのTokyoに設定
+
+
+### 3. キーボードの設定
+
+##### 3-1 「4 Internationalsation Options」を選択。
+
+
+##### 3-2 I3 Change Keyboard Layout
+- 自分のキーボードを選択
+- キーボードレイアウトを聞かれるので、[Japanese – Japanese (OADG 109A)]を選択
+- [The default for the keyboard layout]を選択
+- [No compose key]を選択
+- Ctrl + Alt + Backspace キーの処理は[No]を選択
+
+
+### 4. SSHの有効化
+
+##### 「9 Advanced Options」を選択
+##### 「A4 SSH」を選択
+enabled に。
+
+
+### 5. wifi設定
+
+無線LANアダプタを挿入している場合は下記コマンド実行。
+
+```
+wpa_passphrase WifiのSSID Wifiのパスワード
+```
+
+実行すると下記のようなテキストが出力される
+```
+network={
+  ssid="WifiのSSID"
+  #psk="Wifiのパスワード"
+  psk=hogehogehogehogehogehogehogehogehoge
+}
+```
+
+上記をコピー後、下記コマンドを実行
+
+```
+sudo vi /etc/wpa_supplicant/wpa_supplicant.conf
+```
+
+先ほどのコピーを含め下記にの形にして記入
+
+```
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+network={
+    ssid="WifiのSSID"
+    #psk="Wifiのパスワード"
+    psk=hogehogehogehogehogehogehogehogehoge
+}
+```
+
+最後にRaspberry Pi を再起動
+```
+sudo reboot
+```
+
+これでWifiがつながる。
+無線LANの場合、しばらく放置するとネットワークが切れることがある。
+
+Raspberry Piで無線LANの反応が悪い原因は、
+無線LANのUSBアダプタのパワーマネジメント機能がONになっているためです。
+
+http://denshikousaku.net/fix-sluggish-response-of-raspberry-pi-wifi-adaptor
+
+
+
+
+### 6. ソフトウェアのアップデート
+
+### 7. root パスワードの設定
+
+### 8. デフォルトユーザ名以外のユーザに変更
+
+### 9. SSH設定
+
+### 10. 日本語インストール
+
+
 
 
 
@@ -401,5 +536,19 @@ tail -f /var/log/homebridge.err
 ```
 
 
+# その他
 
+## Raspberry pi の ssh が切れる問題
+http://stkay.hateblo.jp/entry/2014/09/11/162214
 
+ssh ume@192.168.0.18 -p 37895
+
+```
+Host 101.pi
+User ume
+Port 37895
+Hostname 192.168.0.18
+ServerAliveInterval 20
+```
+
+ssh ume@101.pi
