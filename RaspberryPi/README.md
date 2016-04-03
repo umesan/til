@@ -202,10 +202,6 @@ http://start-now.link/100/archives/1930
  7. root パスワードの設定
  8. デフォルトユーザ名以外のユーザに変更
  9. SSH設定
-10. 日本語インストール
-
-
-
 
 
 ### 0. 機器の設置
@@ -450,7 +446,6 @@ sudo usermod -l newpi pi
 ### 9. SSH設定
 >ラズパイの初期設定では、SSHのポート番号がデフォルトの「22」となっています。
 >このままだと攻撃されやすいので、自分の好きなポート番号に変更しましょう！
->
 >http://masatsolan.com/raspberry-pi/raspberry-pi-security/
 
 Raspberry Piにssh接続後、下記を実行。
@@ -503,12 +498,102 @@ sudo shutdown -h now
 >https://datahotel.io/archives/725
 
 
-### 永続化
+## インストール
+
+avahiのライブラリをインストール
+```
+sudo apt-get install libavahi-compat-libdnssd-dev
+```
+
+node.jsのインストール
+```
+wget https://nodejs.org/dist/v4.0.0/node-v4.0.0-linux-armv6l.tar.gz
+```
+
+解答
+```
+tar -xvf node-v4.0.0-linux-armv6l.tar.gz
+```
+
+移動
+```
+cd node-v4.0.0-linux-armv6l
+```
+
+コピー
+```
+sudo cp -R * /usr/local/
+```
+
+再起動
+```
+sudo reboot
+```
+
+インストール確認
+```
+pi@raspberrypi:~/ $ node -v
+# v4.0.0
+
+pi@raspberrypi:~/ $ npm -v
+#2.14.2
+```
+
+
+## 持っているデバイス用のパッケージをインストール
+philipshueの場合
+```
+sudo npm install -g  homebridge-philipshue
+```
+
+
+## homebridge 設定ファイルを編集
+
+インストールしたパッケージを homebridgeに登録して、利用できるようにする。
+
+```
+# xxx は自分で追加したユーザ名
+sudo vi /home/xxx/.homebridge/config.json
+```
+
+下記のフォーマットで記入
+```
+{
+  "bridge": {
+    "name": "Homebridge",
+    # Macアドレスを記入。フォーマットがMacであればOKとのこと
+    "username": "xx:xx:xx:xx:xx:xx",
+    # portは ssh で設定したポート番号以外「49152〜65535」の中から好きに選択
+    "port": xxxxxx,
+    # ここも任意で好きな値をいれてよし
+    "pin": "031-45-154"
+  },
+  "platforms": [
+    {
+      "platform": "PhilipsHue",
+      "name": "Philips Hue",
+      "ip_address": "xxx.xxx.x.xx",
+      "username": "xxxxxx",
+      "excludephilips": false
+    }
+  ]
+}
+```
+
+保存後、コマンド実行
+```
+homebridge
+```
+
+pinコードが表示されれば成功。
+
+
+#### 永続化
 
 ＜参考URL＞  
 https://github.com/nfarina/homebridge/wiki/Running-HomeBridge-on-a-Raspberry-Pi
 
-Raspberry-Pi を再起動した際に、Homebridgeを起動するため、
+Raspberry-Pi を再起動した際に、Homebridgeを起動するため、  
 init スクリプトを作成する。
 
 ##### 1. Raspberry-Piにssh接続
@@ -644,12 +729,39 @@ sudo /etc/init.d/homebridge start
 
 #### 6. ログとエラー確認
 
-Homebridge経由で実行した処理は、
-ログ＆エラーとしてたまっていく。
-
+Homebridge経由で実行した処理は、ログ＆エラーとしてたまっていく。
 下記を実行すると現在のログが確認できる。
 
 ```
 tail -f /var/log/homebridge.log
 tail -f /var/log/homebridge.err
 ```
+
+
+
+## Homekitを利用するための、iOSアプリのインストール
+
+Homekitを利用するための、iOSアプリはいろいろある。
+App Storeに登録されている下記のアプリから好きなのをインストール。
+
+[Insteon+](https://itunes.apple.com/jp/app/insteon+/id919270334)
+[Elgato Eve](https://itunes.apple.com/jp/app/elgato-eve/id917695792?mt=8)
+[Home - Smart Home Automation](https://itunes.apple.com/jp/app/home-smart-home-automation/id995994352?mt=8)
+ - 有料
+ - AppleWatch対応
+
+また、下記でAppleが「HomeKit Catalog」というアプリをソース形式で配布している。  
+カスマイズしたい場合はこちらを利用。  
+[HomeKit Catalog](https://developer.apple.com/library/ios/samplecode/HomeKitCatalog/Introduction/Intro.html)
+
+（ソース形式で配布されているため、Xcodeを使ってビルドする必要があります。ダウンロードにはDevelopperアカウントが必要。）  
+
+
+
+
+
+
+
+
+
+
