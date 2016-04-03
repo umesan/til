@@ -729,7 +729,7 @@ sudo /etc/init.d/homebridge start
 
 #### 6. ログとエラー確認
 
-Homebridge経由で実行した処理は、ログ＆エラーとしてたまっていく。
+Homebridge経由で実行した処理は、ログ＆エラーとしてたまっていく。  
 下記を実行すると現在のログが確認できる。
 
 ```
@@ -741,27 +741,22 @@ tail -f /var/log/homebridge.err
 
 ## Homekitを利用するための、iOSアプリのインストール
 
-Homekitを利用するための、iOSアプリはいろいろある。
-App Storeに登録されている下記のアプリから好きなのをインストール。
-
-[Insteon+](https://itunes.apple.com/jp/app/insteon+/id919270334)
-[Elgato Eve](https://itunes.apple.com/jp/app/elgato-eve/id917695792?mt=8)
-[Home - Smart Home Automation](https://itunes.apple.com/jp/app/home-smart-home-automation/id995994352?mt=8)
+Homekitを利用するための、iOSアプリはいろいろある。  
+App Storeに登録されている下記のアプリから好きなのをインストール。  
+  
+[Insteon+](https://itunes.apple.com/jp/app/insteon+/id919270334)  
+ - 無料
+ - メニュー英語
+[Elgato Eve](https://itunes.apple.com/jp/app/elgato-eve/id917695792?mt=8)  
+ - 無料
+ - メニュー日本語
+[Home - Smart Home Automation](https://itunes.apple.com/jp/app/home-smart-home-automation/id995994352?mt=8)  
  - 有料
  - AppleWatch対応
-
+  
 また、下記でAppleが「HomeKit Catalog」というアプリをソース形式で配布している。  
 カスマイズしたい場合はこちらを利用。  
-[HomeKit Catalog](https://developer.apple.com/library/ios/samplecode/HomeKitCatalog/Introduction/Intro.html)
-
+[HomeKit Catalog](https://developer.apple.com/library/ios/samplecode/HomeKitCatalog/Introduction/Intro.html)  
+  
 （ソース形式で配布されているため、Xcodeを使ってビルドする必要があります。ダウンロードにはDevelopperアカウントが必要。）  
-
-
-
-
-
-
-
-
-
 
