@@ -291,6 +291,7 @@ enabled に。
 
 ### 5. wifi設定
 
+##### 5-1. wifi設定
 無線LANアダプタを挿入している場合は下記コマンド実行。
 
 ```
@@ -329,24 +330,151 @@ network={
 sudo reboot
 ```
 
-これでWifiがつながる。
-無線LANの場合、しばらく放置するとネットワークが切れることがある。
+これでWifiがつながる。  
 
-Raspberry Piで無線LANの反応が悪い原因は、
-無線LANのUSBアダプタのパワーマネジメント機能がONになっているためです。
 
+##### 5-2. 無線LANのUSBアダプタのパワーマネジメント機能をOFFにする
+無線LANの場合、しばらく放置するとネットワークが切れることがある。  
+  
+Raspberry Piで無線LANの反応が悪くなる原因のひとつに、  
+無線LANのUSBアダプタのパワーマネジメント機能がONになっている可能性があるため。  
+  
+下記サイトを参考に設定する。  
 http://denshikousaku.net/fix-sluggish-response-of-raspberry-pi-wifi-adaptor
+ 
+```
+sudo vim /etc/modprobe.d/8192cu.conf
 
+# Disable power saving
+options 8192cu rtw_power_mgnt=0 rtw_enusbss=1 rtw_ips_mode=1
 
+//保存して終了後 Raspberry Piを再起動
+sudo reboot
+```
 
+##### 5-3. ServerAliveIntervalを1以上に設定する
+
+5-2 の対応で無線LANの反応はよくなると思いますが、
+それでもSSHのセッションが切れる場合は、
+ServerAliveIntervalを1以上にしてみましょう。
+
+下記を参考に設定
+http://stkay.hateblo.jp/entry/2014/09/11/162214
+
+```
+# 新規作成
+sudo vi ~/.ssh/config
+
+# 記入
+ServerAliveInterval 20
+
+# 保存して終了
+```
 
 ### 6. ソフトウェアのアップデート
 
-### 7. root パスワードの設定
+Wifiが繋がったので各種ツールをアップデートする。  
+結構時間かかる。  
+  
+```
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get dist-upgrade
 
-### 8. デフォルトユーザ名以外のユーザに変更
+＃ 完了したら再起動
+sudo reboot
+```
+
+### 7. root パスワードの設定
+デフォルトでは設定されていないので、セキュリティ向上のため設定。
+
+```
+sudo passwd root
+```
+新しいパスワードを２回入力して完了。
+
+
+### 8. デフォルトユーザ名以外のユーザを追加
+
+>ラズパイは、最初から「pi」ユーザーが設定されているのですが、
+>「ユーザー名」も「パスワード」も公開されているので、できれば使わない方が無難です。
+>そこで、新しいユーザーを追加しておきましょう！
+>
+>http://masatolan.com/raspberry-pi/raspberry-pi-security/
+
+下記コマンドを実行
+```
+sudo adduser xxxxxx
+```
+新しいパスワードを２回入力。
+途中で色々聞かれるが、そのまま Enter 押してけばOK。
+
+
+「pi」ユーザーと同じgroup(権限?)にしておきたいので、  
+まず「pi」ユーザーのgroupを確認
+```
+groups pi
+```
+
+ズラッと、いろいろ表示されると思いますが、  
+新規ユーザーxxxxxxに全部このgroupを追加。
+```
+sudo usermod -G pi,adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,netdev,input,spi,gpio xxxxxx
+```
+
+groupが追加されたことを確認
+```
+groups xxxxxx
+```
+
+一旦Raspberry Piを終了させて、
+新規ユーザーxxxxxxでログインできるか確認
+```
+ssh xxxxxx@xxx.xxx.x.x
+```
+入れたら新規ユーザ作成完了。  
+  
+
+新規ユーザーでログイン出来たら、
+「pi」ユーザーは使うことが無いので以下のコマンドで削除。
+
+```
+userdel -r pi
+```
+
+削除しない場合はそのまま残しておくか、ユーザー名を変更
+```
+sudo usermod -l newpi pi
+```
+
 
 ### 9. SSH設定
+>ラズパイの初期設定では、SSHのポート番号がデフォルトの「22」となっています。
+>このままだと攻撃されやすいので、自分の好きなポート番号に変更しましょう！
+>
+>http://masatsolan.com/raspberry-pi/raspberry-pi-security/
+
+Raspberry Piにssh接続後、下記を実行。
+```
+sudo vim /etc/ssh/sshd_config
+```
+
+viでSSHの設定ファイルが開いたら、5行目くらいにあるポートの設定を変更
+```
+#Port 22
+Port 51234
+```
+ポート番号は、「49152〜65535」の中から好きに選択可  
+  
+SSHを再起動
+```
+sudo /etc/init.d/ssh restart
+```
+
+ログアウトしてから、以下のようにSSH接続
+```
+ssh xxxxxx@192.168.3.3 -p 51234
+```
 
 ### 10. 日本語インストール
 
@@ -534,10 +662,3 @@ Homebridge経由で実行した処理は、
 tail -f /var/log/homebridge.log
 tail -f /var/log/homebridge.err
 ```
-
-
-# その他
-
-## Raspberry pi の ssh が切れる問題
-http://stkay.hateblo.jp/entry/2014/09/11/162214
-
