@@ -19,7 +19,7 @@ http://www.tapun.net/raspi/raspi-os-setup
 コマンドでのインストール参考  
 http://karaage.hatenadiary.jp/entry/2015/10/20/073000
 
-SD書き込み失敗の原因参考
+SD書き込み失敗の原因参考  
 http://divide-et-impera.org/archives/1092
 
 
