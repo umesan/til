@@ -762,3 +762,10 @@ App Storeに登録されている下記のアプリから好きなのをイン�
   
 （ソース形式で配布されているため、Xcodeを使ってビルドする必要があります。ダウンロードにはDevelopperアカウントが必要。）  
 
+
+
+
+# hubot のインストール
+```
+sudo npm install -g yo generator-hubot
+```
