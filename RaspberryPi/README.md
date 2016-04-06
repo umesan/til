@@ -772,6 +772,7 @@ http://blog.mursts.jp/entry/2015/08/01/hubot-slack-on-raspberrypi/
 http://www.sekailab.com/wp/2014/09/18/hubot-xmpp-slack/  
 http://ja.ngs.io/2014/08/01/slack-hubot-xmpp/  
 http://qiita.com/hakuta@github/items/a9e66ef97768793d5f9c  
+http://blue-goheimochi.hatenablog.com/entry/2014/10/19/SlackとHubotを連携させてPRIVATE_GROUPでも動くようにしてみた
   
 Hubotとその他必要な物をインストール  
 ```
