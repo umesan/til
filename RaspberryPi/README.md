@@ -768,12 +768,12 @@ App Storeに登録されている下記のアプリから好きなのをイン�
 # Raspberry Pi への hubot のインストール
 
 ### 参考URL
-http://blog.mursts.jp/entry/2015/08/01/hubot-slack-on-raspberrypi/
-http://www.sekailab.com/wp/2014/09/18/hubot-xmpp-slack/
-http://ja.ngs.io/2014/08/01/slack-hubot-xmpp/
-http://qiita.com/hakuta@github/items/a9e66ef97768793d5f9c
-
-Hubotとその他必要な物をインストール
+http://blog.mursts.jp/entry/2015/08/01/hubot-slack-on-raspberrypi/  
+http://www.sekailab.com/wp/2014/09/18/hubot-xmpp-slack/  
+http://ja.ngs.io/2014/08/01/slack-hubot-xmpp/  
+http://qiita.com/hakuta@github/items/a9e66ef97768793d5f9c  
+  
+Hubotとその他必要な物をインストール  
 ```
 sudo npm install -g hubot coffee-script generator-hubot
 ```
@@ -795,8 +795,7 @@ export HUBOT_XMPP_ROOMS=general@$HUBOT_XMPP_HOST
 export HUBOT_XMPP_USERNAME=hubot用ユーザー名@グループ名.xmpp.slack.com
 export HUBOT_XMPP_PASSWORD=取得したパスワード
 ```
+  
 
-
-forever
-
+forever  
 http://qiita.com/KeitaMoromizato/items/d9130b3f6c04292c129d
