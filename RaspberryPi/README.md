@@ -470,7 +470,7 @@ sudo /etc/init.d/ssh restart
 ssh xxxxxx@192.168.3.3 -p 51234
 ```
 
-## 終了
+### 10. 終了
 
 電源をひっこ抜くと死ぬことがあるので、  
 ちゃんとシャットダウンしてから電源を抜くこと。  
@@ -488,15 +488,26 @@ sudo shutdown -h now
 
 
 # Homekit
+
 >HomeKitとはApple製品とホームセキュリティや家電を連携する開発システムの事です。  
 >siriで指示すること電気をつけたり、現在は対応家電も発売されています。
+>http://www.apple.com/jp/ios/homekit/
 
+
+Siriをコントローラーとして、家電を操作できるような仕組みを開発できる開発システムのこと。
 
 
 # Homebridge
 >Homekitをエミュレートするnode.jsサーバ。  
 >https://datahotel.io/archives/725
-
+  
+日本ではHomekit対応した家電が少ないため、Siriから操作できる対象の家電が少ない。  
+  
+Homebridgeを利用することで、Homekit未対応の家電に対しても、  
+Siriの命令を受け取り、そこから、Homkit対応家電のように操作命令を擬似的に与えることができます。  
+  
+例えば、Homebridge + IRKitのようなAPIリモコンと組み合わせることで、  
+Homkit対応家電ではないテレビなどにも、Siri経由で電気のON・OFFが可能になります。
 
 ### インストール
 
