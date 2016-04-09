@@ -12,7 +12,8 @@
 
 
 
-RaspberryPiを利用して、家電をSiriやSlackから操作したり、家電の情報をSlackに通知したりできるようにします。  
+RaspberryPiを利用して、家電をSiriやSlackから操作したり、  
+家電の情報をSlackに通知したりできるようにします。  
 下記を順番に参照してください。
   
 
