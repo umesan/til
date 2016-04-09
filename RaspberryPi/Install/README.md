@@ -1,6 +1,6 @@
 # RaspberryPiの初期設定
 
-## 参考URL
+### 参考URL
 http://okuzawats.com/raspberry-pi-os-install-20140904  
 http://okuzawats.com/noobs-20150603  
 http://www.tapun.net/raspi/raspi-os-setup  
@@ -12,7 +12,7 @@ SD書き込み失敗の原因参考
 http://divide-et-impera.org/archives/1092
 
 
-## OSインストールの方法
+### OSインストールの方法
 
 RaspberryPiはコンピュータなので、  
 RaspberryPiで何かするにはRaspberryPi用のOSインストールが必要。  
