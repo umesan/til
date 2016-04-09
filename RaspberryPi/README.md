@@ -946,11 +946,11 @@ IRKitを初期設定し、PCからリモコン操作を可能にしつつ、
 最終的にSiriから対象デバイスを操作できるようにする。
 
 
-### IRKit の初期設定
+### 1.IRKit の初期設定
 IRKitを電源に接続。IRKitの公式アプリにそって初期設定をする。
 その際、IRKitとRaspberry Piが同じネットワークに接続されるように設定する。
 
-### IRKitのIPアドレスを調査
+### 2.IRKitのIPアドレスを調査
 IRKitを使ってリモコン操作するためには、
 IRKitのIPアドレスを知る必要があります。
 
@@ -964,7 +964,7 @@ ping IRKitXXXXXX.local
 実行後に表示される値の中にIPアドレスがあるのでそちらメモする。
 仮に 000.000.0.00 として以降を解説する。
 
-### IRKitでリモコンの赤外線情報を取得する
+### 3.IRKitでリモコンの赤外線情報を取得する
 
 Raspberry Piにログインする。
 
@@ -993,7 +993,7 @@ curl -i "http://000.000.0.00/messages" -H "X-Requested-With: curl" -d '{"format"
 リモコン操作の対象デバイスが動いたら接続テスト成功。
 
 
-### HomebridgeにIRKit用の設定をする
+### 4.HomebridgeにIRKit用の設定をする
 
 HomebridgeにIRKit用のプラグインを追加する
 ```
@@ -1015,7 +1015,7 @@ Homebridgeの設定ファイルにIRKit用の設定を追加
     {
       "platform": "PhilipsHue",
       "name": "Philips Hue",
-      "ip_address": "012.345.6.78",
+      "ip_address": "000.000.0.00",
       "username": "xxxxxx",
       "excludephilips": false
     }
@@ -1023,37 +1023,28 @@ Homebridgeの設定ファイルにIRKit用の設定を追加
   "accessories": [
     {
       "accessory": "IRKit",
-      "name": "Lamp",
+      "name": "家電の名前",
       "irkit_url": "http://000.000.0.00/messages",
-      "on_form": ここに,
-      "off_form": ここに
+      "on_form": ここにON用の赤外線情報,
+      "off_form": ここにOFF用の赤外線情報
     }
   ]
 }
 ```
 
+入力する際、[https://syncer.jp/json-prettyprint](ここで)JSON構文が正しいかチェックすること。
+構文が正しくない場合エラーになります。
 
 
+### 5. Homebridgeの再起動
 
+まずは Raspberry Pi を再起動
+```
+sudo reboot
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Raspberry Piに再度sshでログイン、下記コマンドを実行。
+```
+homebridge
+```
 
