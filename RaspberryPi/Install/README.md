@@ -1,13 +1,15 @@
 # RaspberryPiの初期設定
 
-## 参考URL
+#### 参考URL
+
+インストール参考  
 http://okuzawats.com/raspberry-pi-os-install-20140904  
 http://okuzawats.com/noobs-20150603  
 http://www.tapun.net/raspi/raspi-os-setup  
   
 コマンドでのインストール参考  
 http://karaage.hatenadiary.jp/entry/2015/10/20/073000
-
+  
 SD書き込み失敗の原因参考  
 http://divide-et-impera.org/archives/1092
 
@@ -23,7 +25,7 @@ OSをインストールするには2通りある。
 2. OSを直接インストールする
 
 
-#### Noobs
+##### Noobs
 NoobsはRaspberry Pi用のOS"インストーラ"。   
 https://www.raspberrypi.org/downloads/noobs/  
   
@@ -35,17 +37,21 @@ RaspbianをはじめとするいろいろなOSを、
 
 容量が重いが、GUIがあるのでOSのインストールが簡単。
 
-#### Raspbian
+##### Raspbian
 Raspberry Piの最も一般的なOS。
 https://www.raspberrypi.org/downloads/raspbian/
 
 直接インストールも可能だし、Noobs経由でのインストールも可能。
 
-#### その他のOS
+##### その他のOS
 Pidora,RISC OS,RaspBMC,Arch,OpenELEC
 
 
-# OS インストール
+
+
+
+
+## OS インストール
 
 Noobs経由で作業したところ、HDMIを認識してくれずGUIでのOSインストール作業ができなかったため、  
 コマンドで直接OSをインストールするようにした。
@@ -157,9 +163,9 @@ MacからmicroSDを抜いて、Raspberry Piに挿入する。
 
 
 
-# 初期設定
+## 初期設定
 
-### 初期設定の参考URL
+#### 初期設定の参考URL
   
 初期設定系  
 http://karaage.hatenadiary.jp/entry/2015/10/20/073000  
@@ -191,7 +197,7 @@ http://start-now.link/100/archives/1930
  7. root パスワードの設定
  8. デフォルトユーザ名以外のユーザに変更
  9. SSH設定
-
+10. 終了と再起動
 
 ### 0. 機器の設置
 
@@ -459,7 +465,7 @@ sudo /etc/init.d/ssh restart
 ssh xxxxxx@192.168.3.3 -p 51234
 ```
 
-### 10. 終了
+### 10. 終了と再起動
 
 電源をひっこ抜くと死ぬことがあるので、  
 ちゃんとシャットダウンしてから電源を抜くこと。  
@@ -469,3 +475,8 @@ ssh xxxxxx@192.168.3.3 -p 51234
 sudo shutdown -h now
 ```
 
+  
+再起動させたい場合は下記コマンド
+```
+sudo reboot
+```
