@@ -1,6 +1,6 @@
 # RaspberryPiの初期設定
 
-### 参考URL
+## 参考URL
 http://okuzawats.com/raspberry-pi-os-install-20140904  
 http://okuzawats.com/noobs-20150603  
 http://www.tapun.net/raspi/raspi-os-setup  
@@ -12,7 +12,7 @@ SD書き込み失敗の原因参考
 http://divide-et-impera.org/archives/1092
 
 
-### OSインストールの方法
+## OSインストールの方法
 
 RaspberryPiはコンピュータなので、  
 RaspberryPiで何かするにはRaspberryPi用のOSインストールが必要。  
@@ -51,7 +51,7 @@ Noobs経由で作業したところ、HDMIを認識してくれずGUIでのOSイ
 コマンドで直接OSをインストールするようにした。
 
 
-### 1. 公式サイトからOSをダウンロード。
+#### 1. 公式サイトからOSをダウンロード。
 
 1-1. 「Raspbian Jessie」のZIPファイルを選択  
 https://www.raspberrypi.org/downloads/raspbian/  
@@ -59,7 +59,7 @@ https://www.raspberrypi.org/downloads/raspbian/
 1-2. ダウンロード後、zipを解凍、imgファイルがでてくるのでファイルの配置先を認識しておく  
      うちの環境では Downloads の中に出力されている状態。  
 
-### 2. microSDカードをフォーマット
+#### 2. microSDカードをフォーマット
   
 2-1. SD Card Formatter(for Mac) をダウンロード＆インストール  
      https://www.sdcard.org/downloads/formatter_4/  
@@ -75,7 +75,7 @@ https://www.raspberrypi.org/downloads/raspbian/
 　　　　2-6-5. ボリューム：ファイルシステムが MS-DOS FAT32になっているか確認。  
 　　　　2-6-6. ボリューム：BSD名(diskX)のX部分をメモ(うちの環境ではdisk2s1)  
 
-### 3. imgファイルをmicroSDに書き込み
+#### 3. imgファイルをmicroSDに書き込み
 
 3-1. ディスクのデバイスファイルの確認。
   
