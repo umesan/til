@@ -1,6 +1,6 @@
 # RaspberryPiの初期設定
 
-#### 参考URL
+##### 参考URL
 
 インストール参考  
 http://okuzawats.com/raspberry-pi-os-install-20140904  
