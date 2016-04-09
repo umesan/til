@@ -90,6 +90,13 @@ Homebridgeの設定ファイルにIRKit用の設定を追加
       "irkit_url": "http://000.000.0.00/messages",
       "on_form": ここにON用の赤外線情報,
       "off_form": ここにOFF用の赤外線情報
+    },
+    {
+      "accessory": "IRKit",
+      "name": "家電の名前2",
+      "irkit_url": "http://000.000.0.00/messages",
+      "on_form": ここにON用の赤外線情報,
+      "off_form": ここにOFF用の赤外線情報
     }
   ]
 }
