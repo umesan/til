@@ -9,6 +9,9 @@ IRKitを初期設定し、PCからリモコン操作を可能にしつつ、
 最終的にSiriから対象デバイスを操作できるようにする。
 
 
+###### 参考URL
+https://datahotel.io/archives/725
+
 ### 1.IRKit の初期設定
 IRKitを電源に接続。IRKitの公式アプリにそって初期設定をする。
 その際、IRKitとRaspberry Piが同じネットワークに接続されるように設定する。
