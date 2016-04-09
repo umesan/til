@@ -9,7 +9,7 @@ IRKitを初期設定し、PCからリモコン操作を可能にしつつ、
 最終的にSiriから対象デバイスを操作できるようにする。
 
 
-###### 参考URL
+##### 参考URL
 https://datahotel.io/archives/725
 
 ### 1.IRKit の初期設定
