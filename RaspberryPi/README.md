@@ -11,10 +11,15 @@
 >「モノのインターネット(Internet of Things、以下IoT)」の基となる製品。
 
 
-- [RaspberryPiの初期設定](https://github.com/umesan/til/tree/master/RaspberryPi/Install)
-- [RaspberryPiとHomeKit＆Homebridge](https://github.com/umesan/til/tree/master/RaspberryPi/HomeKit)
-- [RaspberryPiとHubot](https://github.com/umesan/til/tree/master/RaspberryPi/Hubot)
-- [RaspberryPiとIRKit](https://github.com/umesan/til/tree/master/RaspberryPi/IRKit)
+
+RaspberryPiを利用して、家電をSiriやSlackから操作したり、家電の情報をSlackに通知したりできるようにします。  
+下記を順番に参照してください。
+  
+
+- [0.RaspberryPiの初期設定](https://github.com/umesan/til/tree/master/RaspberryPi/Install)
+- [1.RaspberryPiとHomeKit＆Homebridge](https://github.com/umesan/til/tree/master/RaspberryPi/HomeKit)
+- [2.RaspberryPiとHubot](https://github.com/umesan/til/tree/master/RaspberryPi/Hubot)
+- [3.RaspberryPiとIRKit](https://github.com/umesan/til/tree/master/RaspberryPi/IRKit)
 
 
 
