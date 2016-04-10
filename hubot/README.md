@@ -8,7 +8,7 @@ GitHub社が開発しMITライセンスで公開しているNode.jsでbotを作�
 ## 参考URL
 http://qiita.com/misopeso/items/1f418dd02e89234499b3  
 http://qiita.com/acairojuni/items/dc4543aa5827d4c3211c  
-https://iimuz.github.io/2015/11/11/hubotKeepalive.html
+https://iimuz.github.io/2015/11/11/hubotKeepalive.html  
 http://sota1235.hatenablog.com/entry/2015/06/10/130000
 
 ## 手順
