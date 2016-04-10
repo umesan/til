@@ -134,7 +134,13 @@ forever start -c coffee node_modules/.bin/hubot --name "hubotユーザー名" "$
 ##### 6. hubot-heroku-keepaliveを削除
 hubot インストール時に自動的にインストールされる、
 Heroku用のパッケージが不要なので削除。
-  
+
+```
+npm uninstall hubot-heroku-keepalive --save
+```
+
+＆  
+
 ```
 # 対象のファイルを表示
 $ vi external-scripts.json
