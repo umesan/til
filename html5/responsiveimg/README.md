@@ -147,6 +147,6 @@ WordPress4.4からはレスポンシブ・イメージが標準実装されて�
 
 
 ## 参考サイト
-http://parashuto.com/rriver/responsive-web/responsive-images-and-picturefill-2
+http://parashuto.com/rriver/responsive-web/responsive-images-and-picturefill-2  
 http://celtislab.net/archives/20151215/wp-responsive-srcset-test/
 
