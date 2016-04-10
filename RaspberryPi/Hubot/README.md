@@ -39,6 +39,9 @@ sudo npm install -g hubot coffee-script generator-hubot
 sudo npm install forever --save
 ```
 
+coffee-script は最新版のhubotだと不要みたいだけど、  
+forever する際に使うので、このタイミングでインストールしておくこと。  
+
 >最新版のインストール方法だとcoffee-scriptをグローバルインストールしなくても動きます。  
 >この方法でインストールしたら、foreverでデーモン化する際にハマってしまったのでメモ。  
 >以下のコマンドで必ずcoffee-scriptをグローバルインストールしておくこと！
