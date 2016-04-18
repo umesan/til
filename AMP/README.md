@@ -264,6 +264,11 @@ http://xxxxxxxxx.html#development=1
 		$amp = true;
 	}
 ?>
+<?php if($amp): ?>
+ampコンテンツの場合
+<?php else: ?>
+通常コンテンツの場合
+<?php endif; ?>
 ```
 
 ##### WPでの外部CSSのインライン展開 (file_get_contents が使える場合)
