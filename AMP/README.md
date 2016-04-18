@@ -51,17 +51,17 @@ AMPを実装導入したからといって、Googleの検索結果にすぐに�
 
 ## AMPの実装超概要
 記事ページとは別で、「AMP HTML」と呼ばれる独自のテンプレートに沿ってページを作成し、  
-記事ページから <link rel="amphtml" href="ampページ">を指定することで紐付けを行う。
+記事ページから `<link rel="amphtml" href="ampページ">`を指定することで紐付けを行う。
 
 
 ## [AMP仕様] htmlタグの設定
-- DOCTYPE宣言の後は<html ⚡>
+- DOCTYPE宣言の後は`<html ⚡>`
 - canonical urlの設定
-- linkにrel="amphtml"を追加
+- linkに`rel="amphtml"`を追加
 - viewportは決められた値で設定
 - form系のタグ使用禁止
-- 画像は <amp-img>～</amp-img>で記述すること
-- iframeは <amp-iframe>～</amp-iframe>で記述すること
+- 画像は `<amp-img>～</amp-img>`で記述すること
+- iframeは `<amp-iframe>～</amp-iframe>`で記述すること
 
 #### DOCTYPE宣言の後は`<html ⚡>`
 normal
@@ -86,7 +86,7 @@ amp
 
 
 
-#### linkにrel="amphtml"を追加
+#### linkに`rel="amphtml"`を追加
 amp
 ```
 <link rel="amphtml" href="ampページのパス">
@@ -110,7 +110,7 @@ form系（form,input,select,textarea）のタグがあるとエラーになる�
 buttonタグだけはOK。
 
 
-#### 画像は <amp-img>～</amp-img>で記述すること
+#### 画像は `<amp-img>～</amp-img>`で記述すること
 
 ```
 <amp-img layout="responsive" src="hoge.png" width="100" height="100"></amp-img>
@@ -120,18 +120,20 @@ buttonタグだけはOK。
 また AMP は画像の大きさ（width 値と height 値）を明記しないとエラーになるようです。
 
 
-#### iframeは <amp-iframe>～</amp-iframe>で記述すること
+#### iframeは `<amp-iframe>～</amp-iframe>`で記述すること
 
 ```
 <amp-iframe layout="responsive" src="hoge.html"></amp-iframe>
 ```
+
+
 
 ## JS / JSONの設定
 
 - AMP用JSライブラリの追加
 - schema.orgの設定
 - その他JSは読み込みも不可
-
+- 専用コンポーネント集（twitter,vine,Instagram,youtube,goodle adsense, google analytics）
 
 #### AMP用JSライブラリの追加
 amp
@@ -175,14 +177,33 @@ amp
 
 #### その他JSは読み込みも不可
 読み込んではだめ。
+例外的に呼びだせる専用コンポーネントがある。
 
-例外的に呼びだせるものあり
+#### その他 専用コンポーネント集（twitter,vine,Instagram,youtube,goodle adsense, google analytics）
+各サービスのウィジェット系については、AMP用のコンポーネントが提供されているのでそちらを利用する。
+
+ - twitter
+ - vine
+ - Instagram
+ - youtube
+ - goodle adsense
+ - google analytics
+
+```
+<amp-twitter></amp-twitter>
+<amp-vine>～</amp-vine>
+<amp-instagram></amp-instagram>
+<amp-youtube></amp-youtube>
+<amp-ad></amp-ad>
+<amp-analytics></amp-analytics>
+```
+
 
 
 
 #### CSSの設定
 - `<link>`タグでの外部ファイル読み込み・インラインstyle属性の使用不可
-- !important と *zoom は使用禁止
+- `!important` と `*zoom` は使用禁止
 - CSSは50,000Byte(50KB)の制限あり
 - AMP 専用の style タグ amp-boilerplateの読み込み
 
@@ -210,7 +231,7 @@ AMPではスタイルシートを外部ファイルで読み込みが禁止さ�
 
 
 #### `!important` と `*zoom` は使用禁止
-スタイル内に - !important と *zoom があるとエラーになります。
+スタイル内に `!important` と `*zoom` があるとエラーになります。
 
 ```
 <style amp-custom>
@@ -234,22 +255,42 @@ AMP 専用の style タグ amp-boilerplateを読み込むこと。
 
 
 ## デバッグ作業
-ChromeにAMPデバッグ機能があるようなのでこちらを利用。  
+
+#### 1. ChromeでのAMP HTMLのチェック
+Chrome Developer ToolsにAMPデバッグ機能があるようなのでこちらを利用。  
 具体的にはURL末尾に`#development=1` をつけてインスペクタを開く。
 
 ```
 http://xxxxxxxxx.html#development=1
 ```
 
+#### 2. Structured Data Testing ToolでJSON-LDのチェック
+Structured Data Testing Tool  
+https://developers.google.com/structured-data/testing-tool/
+
+
+#### 3. Google Search Consoleに登録していたらレポートでもチェック可
+Google Search Consoleに登録している場合、管理画面にてエラー確認が可能
+https://www.google.com/webmasters/tools/home?hl=ja&pli=1
 
 
 ## 実装してみて苦労したところ
+
+#### 画像の横幅・縦幅調整
 画像の変換（`img`から`amp-img`）へのが一番やっかいだった。    
 横幅・縦幅を指定していない画像に対して、調整しないといけない。  
-  
-その他、不要なタグ・Chromeのデバッグツールでエラーになる箇所を  
-分岐して取り除いていけばよいので、そんなに手間はかからない。
+iframe系やyoutubeとも横幅・縦幅の指定が必須。  
+新規作成の場合は明示していけばよいが、既存コンテンツの改修の場合、設定し直していく必要がある。
 
+#### CSSのインライン展開
+外部スタイルシートをHTML内に展開する必要があるので、  
+静的に制作する場合は何かしらの方法で同期をとらないといけない。  
+  
+PHP環境の場合は、file_get_contents等で読み込んでしまうと楽。
+
+### amp分岐が多くなる
+その他、不要なタグ・Chromeのデバッグツールでエラーになる箇所を  
+分岐を繰り返して取り除いていけばよいので、そんなに手間はかからない。  
   
 尚、レンタルサーバによっては、`getimagesize` や `file_get_contents`が使えないことがあるので、代替処理が必要。
 
@@ -257,12 +298,12 @@ http://xxxxxxxxx.html#development=1
 ##### WPでの分岐処理
 ```
 <?php
-	//AMPチェック
-	$amp = false;
-	$string = $post->post_content;
-	if($_GET['amp'] === '1' && strpos($string,'<script>') === false && is_single()){
-		$amp = true;
-	}
+  //AMPチェック
+  $amp = false;
+  $string = $post->post_content;
+  if($_GET['amp'] === '1' && strpos($string,'<script>') === false && is_single()){
+    $amp = true;
+  }
 ?>
 <?php if($amp): ?>
 ampコンテンツの場合
@@ -400,6 +441,4 @@ ampコンテンツの場合
   <?php the_content(); ?>
 <?php endif;?>
 ```
-
-
 
