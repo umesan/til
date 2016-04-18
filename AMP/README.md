@@ -250,4 +250,151 @@ http://xxxxxxxxx.html#development=1
 その他、不要なタグ・Chromeのデバッグツールでエラーになる箇所を  
 分岐して取り除いていけばよいので、そんなに手間はかからない。
 
+  
+尚、レンタルサーバによっては、`getimagesize` や `file_get_contents`が使えないことがあるので、代替処理が必要。
+
+
+##### WPでの分岐処理
+```
+<?php
+	//AMPチェック
+	$amp = false;
+	$string = $post->post_content;
+	if($_GET['amp'] === '1' && strpos($string,'<script>') === false && is_single()){
+		$amp = true;
+	}
+?>
+```
+
+##### WPでの外部CSSのインライン展開 (file_get_contents が使える場合)
+``` php
+<?php if($amp): ?>
+<style amp-custom>
+<?php 
+  $url = get_bloginfo('url');
+  echo $url;
+  $css1 = file_get_contents($url."/css/style1.css");
+  $css2 = file_get_contents($url."/css/style2.css");
+  $css1 = str_replace(array('@charset "UTF-8";','*zoom: 1;',' !important'),'', $css1);
+  $css2 = str_replace(array('@charset "UTF-8";','*zoom: 1;',' !important'),'', $css2);
+  echo $css1;
+  echo $css2;
+?>
+</style>
+<?php else: ?>
+<link rel="stylesheet" href="<?php bloginfo('url'); ?>/css/style1.css">
+<link rel="stylesheet" href="<?php bloginfo('url'); ?>/css/style1.css">
+<?php endif; ?>
+
+```
+
+##### WPでの外部CSSのインライン展開 (file_get_contents が使えない場合)
+``` php
+<?php if($amp): ?>
+<style amp-custom>
+<?php 
+  function curl_get_contents( $url, $timeout = 60 ){
+    $ch = curl_init();
+    curl_setopt( $ch, CURLOPT_URL, $url );
+    curl_setopt( $ch, CURLOPT_HEADER, false );
+    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+    curl_setopt( $ch, CURLOPT_TIMEOUT, $timeout );
+    $result = curl_exec( $ch );
+    curl_close( $ch );
+    return $result;
+  }
+  $url = get_bloginfo('url');
+  echo $url;
+  $css1 = curl_get_contents($url."/css/style1.css");
+  $css2 = curl_get_contents($url."/css/style2.css");
+  $css1 = str_replace(array('@charset "UTF-8";','*zoom: 1;',' !important'),'', $css1);
+  $css2 = str_replace(array('@charset "UTF-8";','*zoom: 1;',' !important'),'', $css2);
+  echo $css1;
+  echo $css2;
+?>
+</style>
+<?php else: ?>
+<link rel="stylesheet" href="<?php bloginfo('url'); ?>/css/style1.css">
+<link rel="stylesheet" href="<?php bloginfo('url'); ?>/css/style1.css">
+<?php endif; ?>
+```
+
+##### WPでの画像置換処理 (getimagesizeが使える場合)
+``` php
+<?php if($amp): ?>
+  <?php
+    $content = apply_filters( 'the_content', get_the_content() );
+
+    // コンテンツ内の画像を取得
+    preg_match_all('/<img.*src\s*=\s*[\"|\'](.*?)[\"|\'].*>/i', $content, $img_path_list);
+    $count = count($img_path_list[1]);
+    for ($i = 0; $i < $count; $i++){
+
+      // 画像の縦横幅取得
+      $imginfo = getimagesize($img_path_list[1][$i]);
+
+      // 画像の置換後にも必要な箇所を取得
+      preg_match('/<img src="(.*?)"(.*?)\/>/', $img_path_list[0][$i],$match);
+
+      // 置換後のamp形式のタグ
+      $amp_img = '<amp-img layout="responsive" src="'.$match[1].'" width="'.$imginfo[0].'" height="'.$imginfo[1].'" '.$match[2].'></amp-img>';
+
+      // imgタグをamp形式に置換する
+      $content = str_replace($match[0], $amp_img, $content);
+
+    }
+    echo $content;
+  ?>
+<?php else: ?>
+  <?php the_content(); ?>
+<?php endif;?>
+```
+
+
+##### WPでの画像置換処理 (getimagesizeが使えない場合)
+``` php
+<?php if($amp): ?>
+  <?php
+    /**
+     * 画像のURLからattachemnt_idを取得する
+     *
+     * @param string $url 画像のURL
+     * @return int attachment_id
+     */
+    function get_attachment_id($url){
+      global $wpdb;
+      $sql = "SELECT ID FROM {$wpdb->posts} WHERE post_name = %s";
+      preg_match('/([^\/]+?)(-e\d+)?(-\d+x\d+)?(\.\w+)?$/', $url, $matches);
+      $post_name = $matches[1];
+      return (int)$wpdb->get_var($wpdb->prepare($sql, $post_name));
+    }
+
+    $content = apply_filters( 'the_content', get_the_content() );
+
+    // コンテンツ内の画像を取得
+    preg_match_all('/<img.*src\s*=\s*[\"|\'](.*?)[\"|\'].*>/i', $content, $img_path_list);
+    $count = count($img_path_list[1]);
+    for ($i = 0; $i < $count; $i++){
+
+      // 画像の縦横幅取得
+      $imginfo = wp_get_attachment_image_src(get_attachment_id($img_path_list[1][$i]),"full");
+
+      // 画像の置換後にも必要な箇所を取得
+      preg_match('/<img src="(.*?)"(.*?)\/>/', $img_path_list[0][$i],$match);
+
+      // 置換後のamp形式のタグ
+      $amp_img = '<amp-img layout="responsive" src="'.$match[1].'" width="'.$imginfo[1].'" height="'.$imginfo[2].'" '.$match[2].'></amp-img>';
+
+      // imgタグをamp形式に置換する
+      $content = str_replace($match[0], $amp_img, $content);
+
+    }
+    echo $content;
+  ?>
+<?php else: ?>
+  <?php the_content(); ?>
+<?php endif;?>
+```
+
+
 
