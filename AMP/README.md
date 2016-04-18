@@ -54,7 +54,7 @@ AMPを実装導入したからといって、Googleの検索結果にすぐに�
 記事ページから <link rel="amphtml" href="ampページ">を指定することで紐付けを行う。
 
 
-## [AMP仕様]htmlタグの設定
+## [AMP仕様] htmlタグの設定
 - DOCTYPE宣言の後は<html ⚡>
 - canonical urlの設定
 - linkにrel="amphtml"を追加
@@ -63,7 +63,7 @@ AMPを実装導入したからといって、Googleの検索結果にすぐに�
 - 画像は <amp-img>～</amp-img>で記述すること
 - iframeは <amp-iframe>～</amp-iframe>で記述すること
 
-### DOCTYPE宣言の後は<html ⚡>
+#### DOCTYPE宣言の後は`<html ⚡>`
 normal
 ```
 <!DOCTYPE html>
@@ -78,7 +78,7 @@ amp
 ```
 
 
-### canonical urlの設定
+#### canonical urlの設定
 amp
 ```
 <link rel="canonical" href="http://xxxxxxxxxxxxx">
@@ -86,14 +86,14 @@ amp
 
 
 
-### linkにrel="amphtml"を追加
+#### linkにrel="amphtml"を追加
 amp
 ```
 <link rel="amphtml" href="ampページのパス">
 ```
 
 
-### viewportは決められた値で設定
+#### viewportは決められた値で設定
 normal
 ```
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -105,11 +105,12 @@ amp
 ```
 
 
-### form系のタグ使用禁止
+#### form系のタグ使用禁止
 form系（form,input,select,textarea）のタグがあるとエラーになるそうなので、削除すること。  
 buttonタグだけはOK。
 
-### 画像は <amp-img>～</amp-img>で記述すること
+
+#### 画像は <amp-img>～</amp-img>で記述すること
 
 ```
 <amp-img layout="responsive" src="hoge.png" width="100" height="100"></amp-img>
@@ -119,7 +120,7 @@ buttonタグだけはOK。
 また AMP は画像の大きさ（width 値と height 値）を明記しないとエラーになるようです。
 
 
-### iframeは <amp-iframe>～</amp-iframe>で記述すること
+#### iframeは <amp-iframe>～</amp-iframe>で記述すること
 
 ```
 <amp-iframe layout="responsive" src="hoge.html"></amp-iframe>
@@ -132,13 +133,13 @@ buttonタグだけはOK。
 - その他JSは読み込みも不可
 
 
-### AMP用JSライブラリの追加
+#### AMP用JSライブラリの追加
 amp
 ```
 <script async src="https://cdn.ampproject.org/v0.js"></script>
 ```
 
-### schema.orgの設定
+#### schema.orgの設定
 ```
 <script type="application/ld+json">
 {
@@ -172,21 +173,21 @@ amp
 </script>
 ```
 
-### その他JSは読み込みも不可
+#### その他JSは読み込みも不可
 読み込んではだめ。
 
 例外的に呼びだせるものあり
 
 
 
-### CSSの設定
+#### CSSの設定
 - `<link>`タグでの外部ファイル読み込み・インラインstyle属性の使用不可
 - !important と *zoom は使用禁止
 - CSSは50,000Byte(50KB)の制限あり
 - AMP 専用の style タグ amp-boilerplateの読み込み
 
 
-### `<link>`タグでの外部ファイル読み込み・インラインstyle属性の使用不可
+#### `<link>`タグでの外部ファイル読み込み・インラインstyle属性の使用不可
 
 AMPではスタイルシートを外部ファイルで読み込みが禁止されているので、  
 `<link>`タグでスタイルを読み込むとエラーになる。
@@ -208,7 +209,7 @@ AMPではスタイルシートを外部ファイルで読み込みが禁止さ�
 ```
 
 
-### `!important` と `*zoom` は使用禁止
+#### `!important` と `*zoom` は使用禁止
 スタイル内に - !important と *zoom があるとエラーになります。
 
 ```
@@ -220,11 +221,11 @@ AMPではスタイルシートを外部ファイルで読み込みが禁止さ�
 </style>
 ```
 
-### CSSは50,000Byte(50KB)の制限あり
+#### CSSは50,000Byte(50KB)の制限あり
 CSSは50,000Byte(50KB)の制限あり、越えるとエラーになるとのこと。
 
 
-### AMP 専用の style タグ `amp-boilerplate`の読み込み
+#### AMP 専用の style タグ `amp-boilerplate`の読み込み
 AMP 専用の style タグ amp-boilerplateを読み込むこと。  
 これを入れないと AMP として認識されないとのこと。
 ```
@@ -242,11 +243,11 @@ http://xxxxxxxxx.html#development=1
 
 
 
-
 ## 実装してみて苦労したところ
-
-画像の変換（`img`から`amp-img`）へのが一番やっかいだった。  
-横幅・縦幅を指定していない画像に対して、調整しないといけない。
-
+画像の変換（`img`から`amp-img`）へのが一番やっかいだった。    
+横幅・縦幅を指定していない画像に対して、調整しないといけない。  
+  
+その他、不要なタグ・Chromeのデバッグツールでエラーになる箇所を  
+分岐して取り除いていけばよいので、そんなに手間はかからない。
 
 
