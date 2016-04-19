@@ -177,7 +177,7 @@ amp
 
 
 #### その他 専用コンポーネント集（twitter,vine,Instagram,youtube,goodle adsense, google analytics）
-各サービスのウィジェット系については、AMP用のコンポーネントが提供されているのでそちらを利用する。
+各サービスのウィジェット系については、AMP用のコンポーネントが提供されているのでそちらを利用する。  
 また[公式サイト](https://www.ampproject.org/docs/reference/extended.html)にいろいろコンポーネントが置いてます。
 
  - twitter
