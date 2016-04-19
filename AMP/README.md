@@ -132,8 +132,8 @@ buttonタグだけはOK。
 
 - AMP用JSライブラリの追加
 - schema.orgの設定
-- その他JSは読み込みも不可
 - 専用コンポーネント集（twitter,vine,Instagram,youtube,goodle adsense, google analytics）
+- その他JSは読み込みも不可
 
 #### AMP用JSライブラリの追加
 amp
@@ -175,12 +175,10 @@ amp
 </script>
 ```
 
-#### その他JSは読み込みも不可
-読み込んではだめ。
-例外的に呼びだせる専用コンポーネントがある。
 
 #### その他 専用コンポーネント集（twitter,vine,Instagram,youtube,goodle adsense, google analytics）
 各サービスのウィジェット系については、AMP用のコンポーネントが提供されているのでそちらを利用する。
+また[公式サイト](https://www.ampproject.org/docs/reference/extended.html)にいろいろコンポーネントが置いてます。
 
  - twitter
  - vine
@@ -188,6 +186,7 @@ amp
  - youtube
  - goodle adsense
  - google analytics
+ - [その他公式ページDoc参照](https://www.ampproject.org/docs/reference/extended.html)
 
 ```
 <amp-twitter></amp-twitter>
@@ -198,6 +197,10 @@ amp
 <amp-analytics></amp-analytics>
 ```
 
+
+#### その他JSは読み込みも不可
+その他、外部JSは読み込んではだめ。
+インライン配置してもだめ。
 
 
 
