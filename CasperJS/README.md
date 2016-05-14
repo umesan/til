@@ -129,6 +129,109 @@ casperjs
 ```
 
 
+## RasberyPiへのPhantomJSインストール（最新版 2.1.1）
+PhantomJS 最新版をインストールするにはソースからビルドが必要となる
+
+### 参考URL
+http://blog.jiikko.com/36
+http://blog.mursts.jp/entry/2015/10/16/build-phantomjs-on-raspberrypi2/
+
+
+#### 1. swap領域を増やす
+RasberyPiデフォルトのswap領域（100MB）のままだと、ビルド時にメモリが足りなくなりエラーになる。  
+`/etc/dphys-swapfile`の設定ファイルを編集し、4GB(RAMが1GB,swapを3GB)くらいにする
+
+1-1. 設定ファイルを開く
+```
+vi /etc/dphys-swapfile
+```
+
+1-2. `CONF_SWAPSIZE`と`CONF_MAXSWAP`を下記のように設定
+```
+CONF_SWAPSIZE=3048
+CONF_MAXSWAP=3048
+```
+
+1-3. swap領域の再作成
+```
+sudo /etc/init.d/dphys-swapfile restart
+```
+
+
+
+#### 2. 必要パッケージを取得
+```
+sudo apt-get install build-essential g++ flex bison gperf ruby perl libsqlite3-dev libfontconfig1-dev libicu-dev libfreetype6 libssl-dev libpng-dev libjpeg-dev
+```
+
+
+#### 3. ソースをもってくる
+
+インストール先は`/home/xx/casperjs/` 以下だったので、まずは移動。
+```
+cd /home/xx/casperjs/
+```
+
+git からクローン
+```
+git clone git://github.com/ariya/phantomjs.git
+```
+
+クローン完了したら`phantomjs`へ移動
+```
+cd phantomjs
+```
+
+最新バージョン(2.1.1)にチェックアウト
+```
+git checkout 2.1.1
+```
+
+
+#### 4. ビルドする
+チェックアウト後ビルドする。
+参考サイトだと`./build.sh`と書いてあるが、
+最新版チェックアウトすると`./build.py`しかなかったのでそれを実行
+```
+./build.py
+```
+
+`ビルド完了するのに半日くらいかかるので待つ`
+
+#### 5. バージョン確認
+ビルドが完了すると`bin`ディレクトリができていて中に`phantomjs`があるのを確認。
+```
+cd bin
+```
+
+バージョンを確認してみる
+```
+phantomjs --version
+
+# 1.9.8
+```
+
+古い場合は、シンボリックリンクを貼り直す必要あり。  
+シンボリックリンク先へ移動して解除。
+```
+cd /bin/
+sudo unlink phantomjs
+```
+
+リンボリックリンク貼り直し
+```
+sudo ln -s /home/xx/casperjs/phantomjs/bin/phantomjs /bin/phantomjs
+```
+
+もう一度バージョン確認。
+```
+phantomjs --version
+
+# 2.1.1
+```
+
+
+
 
 
 
