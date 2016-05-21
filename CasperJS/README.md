@@ -218,7 +218,7 @@ cd /bin/
 sudo unlink phantomjs
 ```
 
-リンボリックリンク貼り直し
+シンボリックリンク貼り直し
 ```
 sudo ln -s /home/xx/casperjs/phantomjs/bin/phantomjs /bin/phantomjs
 ```
