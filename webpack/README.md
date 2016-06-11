@@ -1,4 +1,7 @@
 # webpack
+>webpack は WebApp に必要なリソースの依存関係を解決し、アセット（配布物）を生成するビルドツール（要するにコンパイラ）です。JavaScript だけでなく、CoffeeScript や TypeScript、CSS 系、画像ファイルなどを扱うことができます。  
+>http://qiita.com/yosisa/items/61cfd3ede598e194813b
+
 
 ## webpackでsass
 
