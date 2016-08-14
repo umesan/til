@@ -30,3 +30,5 @@ Milton(ミルトン) CP チャイルドプルーフ 60錠
 https://www.amazon.co.jp/%E3%83%9F%E3%83%AB%E3%83%88%E3%83%B3-Milton-CP-%E3%83%81%E3%83%A3%E3%82%A4%E3%83%AB%E3%83%89%E3%83%97%E3%83%AB%E3%83%BC%E3%83%95-60%E9%8C%A0/dp/B00137E4TC/ref=pd_cp_121_1?ie=UTF8&psc=1&refRID=3BSNHQXB3V374SY52PD4
 
 
+- [退院後に購入したもの](https://github.com/umesan/til/tree/master/child/leaving_hospital)
+- [お風呂の入れ方](https://github.com/umesan/til/tree/master/child/bath)
