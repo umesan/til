@@ -62,7 +62,7 @@ hubot> PONG
 
 ```
 
-５. Gitリポジトリへpush
+５. Gitリポジトリへpush  
 Github でリポジトリを作成、リポジトリをチェックアウトし、push
 
 
