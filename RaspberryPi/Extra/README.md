@@ -25,7 +25,7 @@ Menu -> Accessories -> Terminal にて `ifconfig` するとIPが `192.xxx.x.xx`�
 ssh ユーザ名@192.xxx.x.xx -p xxxx
 ```
 
-＜固定IP参考＞
+＜固定IP参考＞  
 http://qiita.com/ykog/items/a6dbba1c09e870f8f702  
 http://qiita.com/MarieKawasuji/items/b088ffb252a92eee8f5d  
 http://hattotech.hatenablog.com/entry/2016/04/13/000244  
