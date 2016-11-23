@@ -38,3 +38,12 @@ npm info モジュール名
 ```
 npm install モジュール名
 ```
+
+
+
+
+# npm公開をとりやめる
+```
+npm unpublish パッケージ名前 --force
+```
+https://ota42y.com/blog/2014/09/29/npm-publish/
