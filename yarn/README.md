@@ -59,5 +59,11 @@ https://yarnpkg.com/en/docs/migrating-from-npm
 
 
 
+# 参考リンク
+https://yarnpkg.com/  
+http://qiita.com/0829/items/ec5271c06f8ff0633dd3  
+http://qiita.com/mizchi/items/1002fde0de10e7c54fb2  
+https://ics.media/entry/13838  
+
 
 
