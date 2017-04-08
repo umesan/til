@@ -90,20 +90,47 @@ Homebridgeの設定ファイルにIRKit用の設定を追加
     {
       "accessory": "IRKit",
       "name": "家電の名前",
-      "irkit_url": "http://000.000.0.00/messages",
+      "irkit_host": "000.000.0.00",
       "on_form": ここにON用の赤外線情報,
       "off_form": ここにOFF用の赤外線情報
     },
     {
       "accessory": "IRKit",
       "name": "家電の名前2",
-      "irkit_url": "http://000.000.0.00/messages",
+      "irkit_host": "000.000.0.00",
       "on_form": ここにON用の赤外線情報,
       "off_form": ここにOFF用の赤外線情報
     }
   ]
 }
 ```
+
+旧書式では下記の形式だった。  
+homebridge-irkitの最新版では、新書式に変更されている。  
+Webで検索すると下記がでてくることがあるので注意。  
+
+**旧書式**  
+```
+    {
+      "accessory": "IRKit",
+      "name": "家電の名前",
+      "irkit_url": "http://000.000.0.00/messages",
+      "on_form": ここにON用の赤外線情報,
+      "off_form": ここにOFF用の赤外線情報
+    }
+```
+
+**新書式**  
+```
+{
+      "accessory": "IRKit",
+      "name": "家電の名前",
+      "irkit_host": "000.000.0.00",
+      "on_form": ここにON用の赤外線情報,
+      "off_form": ここにOFF用の赤外線情報
+}
+```
+
 
 入力する際、[https://syncer.jp/json-prettyprint](ここで)JSON構文が正しいかチェックすること。
 構文が正しくない場合エラーになります。
